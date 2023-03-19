@@ -1,0 +1,47 @@
+{
+  "MDX title": {
+    "prefix": "mdxtitle",
+    "body": ["---", "id: $1", "title: $2", "sidebar_label: $3", "---"],
+    "description": "MDX file titles"
+  },
+  "MDX Multilingual Tabs": {
+    "prefix": "mdxtabs",
+    "body": [
+      "",
+      "import Tabs from '@theme/Tabs';",
+      "import TabItem from '@theme/TabItem';",
+      "",
+      "  <Tabs",
+      "    defaultValue=\"native\"",
+      "    values={[",
+      "    { label: 'Native', value: 'native' },",
+      "    { label: 'React', value: 'react' },",
+      "    { label: 'Cypress', value: 'cypress' }]",
+      "  }>",
+      "  <TabItem value=\"native\">",
+      "",
+      "  ```js",
+      "  $1",
+      "  ```",
+      "",
+      "  </TabItem>",
+      "  <TabItem value=\"react\">",
+      "",
+      "  ```jsx",
+      "  $2",
+      "  ```",
+      "",
+      "  </TabItem>",
+      "  <TabItem value=\"cypress\">",
+      "",
+      "  ```js",
+      "  $3",
+      "  ```",
+      "",
+      "  </TabItem>",
+      "  </Tabs>",
+      ""
+    ],
+    "description": "MDX multilingual tabs"
+  }
+}
