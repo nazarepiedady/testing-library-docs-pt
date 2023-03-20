@@ -2312,6 +2312,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rydash",
+      "name": "Ryan McGill",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9492442?v=4",
+      "profile": "https://github.com/rydash",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "renansoares",
+      "name": "Renan Andrade",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1657840?v=4",
+      "profile": "http://rensoares.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
