@@ -3,7 +3,7 @@ module.exports = {
     'recipes',
     {
       type: 'category',
-      label: 'Examples',
+      label: 'Exemplos',
       collapsed: false,
       items: [
         'example-codesandbox',
@@ -24,14 +24,14 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Help',
+      label: 'Ajuda',
       collapsed: false,
       items: ['learning', 'contributing'],
     },
   ],
   docs: [
     {
-      'Getting Started': [
+      'Começar': [
         'introduction',
         'guiding-principles',
         'dom-testing-library/faq',
@@ -39,12 +39,12 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Core API',
+      label: 'API Principal',
       collapsed: true,
       items: [
         {
           type: 'category',
-          label: 'Queries',
+          label: 'Consultas',
           collapsed: false,
           items: [
             'queries/about',
@@ -60,7 +60,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'User Actions',
+          label: 'Ações de Utilizador',
           collapsed: false,
           items: [
             'dom-testing-library/api-events',
@@ -72,7 +72,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Advanced',
+          label: 'Avançado',
           collapsed: false,
           items: [
             'dom-testing-library/api-accessibility',
@@ -86,7 +86,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Frameworks',
+      label: 'Abstrações',
       items: [
         {
           'DOM Testing Library': [
@@ -172,7 +172,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'User Interactions',
+      label: 'Interações de Utilizador',
       collapsed: true,
       items: [
         'user-event/intro',
