@@ -30,7 +30,7 @@ const HomeSplash = props => {
 
   const Logo = props => (
     <div className="projectLogo">
-      <img src={props.img_src} alt="Project Logo" />
+      <img src={props.img_src} alt="Logótipo do Projeto" />
     </div>
   )
 
@@ -59,7 +59,7 @@ const HomeSplash = props => {
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
         <div className="pluginWrapper buttonWrapper">
-          <Button href={'/docs/'}>Get Started</Button>
+          <Button href={'/docs/'}>Começar</Button>
         </div>
       </div>
     </SplashContainer>
@@ -91,8 +91,8 @@ export default class Index extends React.Component {
         <div style={{textAlign: 'center'}}>
           <p>
             <i>
-              The more your tests resemble the way your software is used, <br />
-              the more confidence they can give you.
+              Quanto mais os teus testes se parecerem com a maneira que o teu software é usado, <br />
+              mais confiança eles podem dar-te.
             </i>
           </p>
         </div>
@@ -106,9 +106,9 @@ export default class Index extends React.Component {
             {
               title: '',
               content:
-                "## The Problem \n - You want tests for your UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+                "## O Problema \n - Tu queres testes para a tua interface de utilizador que evitam a inclusão de detalhes de implementação e concentrar-te em fazer os teus testes darem-te a confiança para qual elas estão destinados. \n - Tu queres que os teus testes sejam sustentáveis assim as refatorações _(mudam a implementação mas não a funcionalidade)_ não quebram os teus testes e abrandam-te e a tua equipa.",
               image: `${baseUrl}img/interrobang-128x128.png`,
-              imageAlt: 'The problem (picture of a question mark)',
+              imageAlt: 'O problema (imagem de um ponto de interrogação)',
               imageAlign: 'left',
             },
           ]}
@@ -123,21 +123,21 @@ export default class Index extends React.Component {
             title: '',
             image: `${baseUrl}img/star-128x128.png`,
             imageAlign: 'right',
-            imageAlt: 'The solution (picture of a star)',
+            imageAlt: 'A solução (imagem de uma estrela)',
             content:
-              '## The Solution \n The Testing Library family of libraries is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
+              '## A Solução \n A família da Testing Library de bibliotecas é uma solução muito leve para testagem sem todos os detalhes de implementação. Os utilitários principais que ela fornece envolve a consulta por nós de maneira parecida à como os utilizadores os encontrariam. Desta maneira, a testing-library ajuda a assegurar que os teus testes dam-te confiança no código da tua interface de utilizador.',
           },
         ]}
       </Block>,
       <Block background={'light'} align="left">
         {[
           {
-            title: 'Guiding Principle',
+            title: 'Princípio Orientador',
             image: `${baseUrl}img/trophy-128x128.png`,
             imageAlign: 'left',
-            imageAlt: 'The guiding principle (picture of a brick wall)',
+            imageAlt: 'O princípio orientador (imagem de um muro de tijolo)',
             content:
-              '_The more your tests resemble the way your software is used, the more confidence they can give you._',
+              '_Quanto mais os teus testes se parecerem com a maneira que o teu software é usado, mais confiança eles podem dar-te._',
           },
         ]}
       </Block>,
@@ -148,23 +148,23 @@ export default class Index extends React.Component {
         {[
           {
             content:
-              'Tests only break when your app breaks, not implementation details',
+              'Os testes apenas quebram quando a tua aplicação quebra, não os teus detalhes de implementação',
             image: `${baseUrl}img/wrench-128x128.png`,
             imageAlign: 'top',
-            title: 'Write Maintainable Tests',
+            title: 'Escreva Testes Sustentáveis',
           },
           {
-            content: 'Interact with your app the same way as your users',
+            content: 'Interaja com a tua aplicação da mesma maneira que os teus utilizadores',
             image: `${baseUrl}img/check-128x128.png`,
             imageAlign: 'top',
-            title: 'Develop with Confidence',
+            title: 'Programe com Confiança',
           },
           {
             content:
-              'Built-in selectors find elements the way users do to help you write inclusive code',
+              'Seletores embutidos encontram os elementos da mesma maneira que os utilizadores fazem para ajudar-te a escrever código inclusivo',
             image: `${baseUrl}img/tada-128x128.png`,
             imageAlign: 'top',
-            title: 'Accessible by Default',
+            title: 'Acessível por Padrão',
           },
         ]}
       </Block>
@@ -231,7 +231,7 @@ export default class Index extends React.Component {
           {
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
-            title: '[And more...](./docs/ecosystem-user-event)',
+            title: '[E muito mais...](./docs/ecosystem-user-event)',
           },
         ]}
       </Block>
@@ -246,7 +246,7 @@ export default class Index extends React.Component {
 
       return (
         <div className="productShowcaseSection paddingBottom paddingTop">
-          <h2>Who is Using This?</h2>
+          <h2>Quem está Usando Isto?</h2>
           <div className="logos">
             <Showcase
               users={siteConfig.customFields.users.filter(u => u.pinned)}
@@ -256,7 +256,7 @@ export default class Index extends React.Component {
             className="button button--primary button--outline"
             href={pageUrl('users')}
           >
-            More {siteConfig.title} Users
+            Mais de {siteConfig.title} Utilizadores
           </a>
         </div>
       )
@@ -265,7 +265,7 @@ export default class Index extends React.Component {
     const Awards = () => {
       return (
         <div className="awardsSection paddingBottom paddingTop">
-          <h2>Awards</h2>
+          <h2>Condecorações</h2>
           <Block layout="threeColumn" background={null}>
             {[
               {
@@ -273,14 +273,14 @@ export default class Index extends React.Component {
                 imageAlign: 'top',
                 imageLink: 'https://osawards.com/react/2019',
                 imageAlt:
-                  'Winner of the Open Source Awards 2019 in the category "The most impactful contribution to the community"',
+                  'Vencedor das Condecorações de Código Aberto de 2019 na categoria "A contribuição com mais impacto na comunidade"',
               },
               {
                 image: `${baseUrl}img/highest-satisfaction-638x574.png`,
                 imageAlign: 'top',
                 imageLink: 'https://2020.stateofjs.com/en-US/awards/',
                 imageAlt:
-                  'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users',
+                  'Vencedor da Condecoração do Estado da JavaScript de 2020 para "a tecnologia com mais elevada percentagem de utilizadores satisfeitos"',
               },
             ]}
           </Block>
