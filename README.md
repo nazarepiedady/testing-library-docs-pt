@@ -1,18 +1,18 @@
-## testing-library-docs
+## Documentação da Testing Library em Português
 
 <!-- prettier-ignore-start -->
-[![All Contributors][allcontributors-badge]](#contributors)
+[![All Contributors][allcontributors-badge]](#colaboradores)
 [![Code of Conduct][coc-badge]][coc]
 <!-- prettier-ignore-end -->
 
-Documentation site for
-[React Testing Library](https://github.com/testing-library/react-testing-library),
+Página de documentação para
 [DOM Testing Library](https://github.com/testing-library/dom-testing-library),
-and [related projects](https://github.com/testing-library)
+[React Testing Library](https://github.com/testing-library/react-testing-library),
+e [projetos relacionados](https://github.com/testing-library)
 
 **https://testing-library.com**
 
-**Build Status**:
+**Estado da Construção**:
 
 [![Netlify Status][netlify-badge]][build]
 
@@ -26,35 +26,35 @@ and [related projects](https://github.com/testing-library)
 [coc]:
   https://github.com/testing-library/react-testing-library/blob/main/CODE_OF_CONDUCT.md
 
-This website was created with [Docusaurus](https://v2.docusaurus.io).
+Está página foi criada com a [Docusaurus](https://v2.docusaurus.io).
 
-# What's In This Document
+# O Que Está Nesta Documentação
 
-- [Get Started in 5 Minutes](#get-started-in-5-minutes)
-- [Editing Content](#editing-content)
-- [Adding Content](#adding-content)
+- [Começar em 5 Minutos](#começar-em-5-minutos)
+- [Editar o Conteúdo](#editar-o-conteúdo)
+- [Adicionar Conteúdo](#adicionar-conteúdo)
 
-# Get Started in 5 Minutes
+# Começar em 5 Minutos
 
-1. Make sure all the dependencies for the website are installed:
+1. Certifica-te de que todas as dependências para o sítio estão instaladas:
 
 ```sh
-# Install dependencies
+# Instalar dependências
 $ npm install
 ```
 
-2. Run your dev server:
+2. Execute o teu servidor de desenvolvimento:
 
 ```sh
-# Start the site
+# Iniciar o sítio
 $ npm start
 ```
 
-# Editing Content
+# Editar o Conteúdo
 
-## Editing an existing docs page
+## Editar uma página da documentação existente
 
-Edit docs by navigating to `docs/` and editing the corresponding document:
+Edite a documentação navegando para `docs/` e editando o documento correspondente:
 
 `docs/doc-to-be-edited.mdx`
 
@@ -67,11 +67,11 @@ title: This Doc Needs To Be Edited
 Edit me...
 ```
 
-For more information about docs, click [here](https://v2.docusaurus.io/docs)
+Para mais informações sobre esta pasta documentação, clique [nesta ligação](https://v2.docusaurus.io/docs).
 
-## Editing an existing blog post
+## Editar uma publicação do blogue existente
 
-Edit blog posts by navigating to `blog` and editing the corresponding post:
+Edite as publicações do blogue navegando para `blog` e editando a publicação respondente:
 
 `blog/post-to-be-edited.mdx`
 
@@ -84,15 +84,13 @@ title: This Blog Post Needs To Be Edited
 Edit me...
 ```
 
-For more information about blog posts, click
-[here](https://v2.docusaurus.io/docs/blog)
+Para mais informações sobre as publicações do blogue, clique [nesta ligação](https://v2.docusaurus.io/docs/blog).
 
-# Adding Content
+# Adicionar Conteúdo
 
-## Adding a new docs page to an existing sidebar
+## Adicione uma nova página da documentação para uma barra lateral existente
 
-1. Create the doc as a new markdown file in `/docs`, example
-   `docs/newly-created-doc.mdx`:
+1. Crie a documento como um ficheiro de Markdown dentro de `/docs`, por exemplo `docs/newly-created-doc.mdx`:
 
 ```md
 ---
@@ -103,18 +101,17 @@ title: This Doc Needs To Be Edited
 My new content here..
 ```
 
-Note: Ensure the file name and the id value do not include non-url safe
-characters i.e. '\*'.
+Nota: assegure que o nome do ficheiro e o valor do identificador não incluam caracteres saguros que não possam ser usados na URL, por exemplo, '\*'.
 
-2. Refer to that doc's ID in an existing sidebar in `sidebar.json`:
+2. Faça referencia à aquele identificador do documento em uma barra lateral existente no `sidebar.json`:
 
 ```javascript
-// Add newly-created-doc to the Getting Started category of docs
+// Adicione `newly-created-doc` à catergoria `Getting Started` de `docs`
 {
   "docs": {
     "Getting Started": [
       "quick-start",
-      "newly-created-doc" // new doc here
+      "newly-created-doc" // o novo documento vai aqui
     ],
     ...
   },
@@ -122,13 +119,11 @@ characters i.e. '\*'.
 }
 ```
 
-For more information about adding new docs, click
-[here](https://v2.docusaurus.io/docs/)
+Para mais informações sobre a adição de novas documentações, clique [nesta ligação](https://v2.docusaurus.io/docs/).
 
-## Contributors
+## Colaboradores
 
-Thanks goes to these wonderful people
-([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Os agradecimentos vão para estas maravilhosas pessoas ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -474,6 +469,4 @@ Thanks goes to these wonderful people
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the
-[all-contributors](https://github.com/all-contributors/all-contributors)
-specification. Contributions of any kind welcome!
+Este projeto segue a especificação [all-contributors](https://github.com/all-contributors/all-contributors). As contribuições de qualquer tipo é bem-vinda!
