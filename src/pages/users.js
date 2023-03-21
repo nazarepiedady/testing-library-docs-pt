@@ -26,18 +26,18 @@ export default function Users(props) {
         <div>
           <div className="showcaseSection">
             <div className="prose">
-              <h1>Who is Using This?</h1>
-              <p>This project is used by many folks</p>
+              <h1>Quem está Usando Isto?</h1>
+              <p>Este projeto é usado por muita gente</p>
             </div>
             <div className="logos">
               <Showcase users={siteConfig.customFields.users} />
             </div>
-            <p>Are you using this project?</p>
+            <p>Tu estás a usar este projeto?</p>
             <a
               href={editUrl}
               className="button button--primary button--outline"
             >
-              Add your company
+              Adicione a tua empresa
             </a>
           </div>
         </div>
