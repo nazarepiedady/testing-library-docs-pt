@@ -1,10 +1,10 @@
 module.exports = {
   title: 'Testing Library',
   tagline:
-    'Simple and complete testing utilities that encourage good testing practices',
+    'Utilitários de testagem simples e completo que encorajam boas práticas de testagem',
   url: 'https://testing-library.com',
   baseUrl: '/',
-  projectName: 'testing-library-docs',
+  projectName: 'testing-library-docs-pt',
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
@@ -201,7 +201,7 @@ module.exports = {
       },
     ],
     repoUrl: 'https://github.com/testing-library/dom-testing-library',
-    docsRepoUrl: 'https://github.com/testing-library/testing-library-docs',
+    docsRepoUrl: 'https://github.com/nazarepiedady/testing-library-docs-pt',
     docsPath: 'docs',
   },
   onBrokenLinks: 'log',
@@ -216,7 +216,7 @@ module.exports = {
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
           ],
           editUrl:
-            'https://github.com/testing-library/testing-library-docs/edit/main/',
+            'https://github.com/nazarepiedady/testing-library-docs-pt/edit/main/',
           path: './docs',
           sidebarPath: './sidebars.js',
         },
@@ -247,30 +247,30 @@ module.exports = {
     navbar: {
       title: 'Testing Library',
       logo: {
-        alt: 'An octopus representing the DOM Testing Library Logo',
+        alt: 'Um polvo representando o logótipo da DOM Testing Library',
         src: 'img/octopus-64x64.png',
       },
       items: [
         {
           type: 'doc',
           docId: 'introduction',
-          label: 'Docs',
+          label: 'Documentação',
           position: 'left',
         },
         {
           type: 'doc',
           docId: 'recipes',
-          label: 'Examples',
+          label: 'Exemplos',
           position: 'left',
         },
         {
           to: '/help',
-          label: 'Help',
+          label: 'Ajuda',
           position: 'right',
         },
         {
           to: '/blog',
-          label: 'Blog',
+          label: 'Blogue',
           position: 'right',
         },
       ],
@@ -278,14 +278,14 @@ module.exports = {
     footer: {
       links: [
         {
-          title: 'Docs',
+          title: 'Documentação',
           items: [
             {
-              label: 'Getting Started',
+              label: 'Começar',
               to: 'docs',
             },
             {
-              label: 'Examples',
+              label: 'Exemplos',
               to: 'docs/example-codesandbox',
             },
             {
@@ -293,16 +293,16 @@ module.exports = {
               to: 'docs/dom-testing-library/api',
             },
             {
-              label: 'Help',
+              label: 'Ajuda',
               to: 'docs/dom-testing-library/faq',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Comunidade',
           items: [
             {
-              label: 'Blog',
+              label: 'Blogue',
               to: 'blog',
             },
             {
@@ -317,7 +317,7 @@ module.exports = {
           ],
         },
         {
-          title: 'More',
+          title: 'Mais',
           items: [
             {
               html: `
@@ -335,17 +335,17 @@ module.exports = {
               href: 'https://github.com/testing-library',
             },
             {
-              label: 'Edit Docs on GitHub',
-              href: 'https://github.com/testing-library/testing-library-docs',
+              label: 'Editar a Documentação na GitHub',
+              href: 'https://github.com/nazarepiedady/testing-library-docs.pt',
             },
             {
-              label: 'Hosted by Netlify',
+              label: 'Hospedado pela Netlify',
               href: 'https://netlify.com',
             },
           ],
         },
       ],
-      copyright: `Copyright © 2018-${new Date().getFullYear()} Kent C. Dodds and contributors`,
+      copyright: `Copyright © 2018-${new Date().getFullYear()} Kent C. Dodds e colaboradores`,
       logo: {
         src: 'img/octopus-128x128.png',
       },
