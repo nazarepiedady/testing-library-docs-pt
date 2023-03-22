@@ -1,30 +1,22 @@
 ---
 id: guiding-principles
-title: Guiding Principles
-sidebar_label: Guiding Principles
+title: Princípios Orientadores
+sidebar_label: Princípios Orientadores
 ---
 
-> [The more your tests resemble the way your software is used, the more
-> confidence they can give you.][guiding-principle]
+> [Quanto mais os teus testes se parecerem com a maneira que o teu software é usado, mais confiança eles podem dar-te.][guiding-principle]
 
-We try to only expose methods and utilities that encourage you to write tests
-that closely resemble how your web pages are used.
+Nós tentamos apenas expor os métodos e utilitários que encorajam-te a escrever testes que assemelham-se minuciosamente com como as tuas página de web são usadas.
 
-Utilities are included in this project based on the following guiding
-principles:
+Os utilitários são incluídos neste projeto baseados nos seguintes princípios orientadores:
 
-1.  If it relates to rendering components, then it should deal with DOM nodes
-    rather than component instances, and it should not encourage dealing with
-    component instances.
-2.  It should be generally useful for testing the application components in the
-    way the user would use it. We _are_ making some trade-offs here because
-    we're using a computer and often a simulated browser environment, but in
-    general, utilities should encourage tests that use the components the way
-    they're intended to be used.
-3.  Utility implementations and APIs should be simple and flexible.
+1. Se está relacionado a apresentação dos componentes, então deveria lidar com os nós do DOM ao invés das instâncias do componente, e não deveria encorajar a lidar com as instâncias do componente.
 
-At the end of the day, what we want is for this library to be pretty
-light-weight, simple, and understandable.
+2. Ele deveria ser geralmente útil para testagem dos componentes da aplicação de uma maneira que o utilizador o usaria. Nós _estamos_ a fazer alguns acordos neste porque estão a usar um computador e com frequência um ambiente de navegador simulado, mas em geral, os utilitários deveriam encorajar testes que usam os componentes da maneira que estão destinados a serem usados.
+
+3. As implementações do utilitários e APIs deveriam ser simples e flexíveis.
+
+No final do dia, o que queremos é que está biblioteca seja muito leve, simples, e compreensível.
 
 <!--
 Links:
