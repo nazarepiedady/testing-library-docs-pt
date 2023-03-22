@@ -1,51 +1,37 @@
 ---
 id: using-fake-timers
-title: Using Fake Timers
-sidebar_label: Using Fake Timers
+title: Usando Temporizadores Falsos
+sidebar_label: Usando Temporizadores Falsos
 ---
 
-In some cases, when your code uses timers (`setTimeout`, `setInterval`,
-`clearTimeout`, `clearInterval`), your tests may become unpredictable, slow and
-flaky.
+Em alguns casos, quando o teu código usa temporizadores (`setTimeout`, `setInterval`, `clearTimeout`, `clearInterval`), os teus testes podem tornarem-se imprevisíveis, lentos e estranhos.
 
-To solve these problems, or if you need to rely on specific timestamps in your
-code, most testing frameworks offer the option to replace the real timers in
-your tests with fake ones. This should be used sporadically and not on a regular
-basis since using it contains some overhead.
+Para solucionar estes problemas, ou se precisares de depender de marcas de tempo no teu código, a maioria das abstrações de testagem oferecem a opção para substituir os temporizadores verdadeiros nos teus testes com uns falsos. Isto deveria ser usado esporadicamente e não sobre uma base regular já que usá-lo inclui algumas despesas gerais.
 
-When using fake timers in your tests, all of the code inside your test uses fake
-timers.
+Quando estiveres a usar os temporizadores falsos nos teus testes, todo código dentro do teu teste usa os temporizadores falsos.
 
-The common pattern to setup fake timers is usually within the `beforeEach`, for
-example:
+O padrão comum para configurar os temporizadores falsos é normalmente dentro de `beforeEach`, por exemplo:
 
 ```js
-// Fake timers using Jest
+// Temporizadores falsos usando Jest
 beforeEach(() => {
   jest.useFakeTimers()
 })
 ```
 
-When using fake timers, you need to remember to restore the timers after your
-test runs.
+Quando estiveres a usar os temporizadores falsos, precisaras de lembrar-te de reiniciar os temporizadores depois do teu teste executar.
 
-The main reason to do that is to prevent 3rd party libraries running after your
-test finishes (e.g cleanup functions), from being coupled to your fake timers
-and use real timers instead.
+A razão principal para fazer isto é para prevenir que bibliotecas de terceiros que executam depois de o teu teste terminar (por exemplo, limpeza de funções), de serem associadas aos teus temporizadores falsos e ao invés dos falsos usarem os temporizadores verdadeiros.
 
-For that you usually call `useRealTimers` in `afterEach`.
+Para isto normalmente chamas `useRealTimers` dentro de `afterEach`.
 
-It's important to also call `runOnlyPendingTimers` before switching to real
-timers. This will ensure you flush all the pending timers before you switch to
-real timers. If you don't progress the timers and just switch to real timers,
-the scheduled tasks won't get executed and you'll get an unexpected behavior.
-This is mostly important for 3rd parties that schedule tasks without you being
-aware of it.
+É importante também chamar `runOnlyPendingTimers` antes de alternar para os temporizadores verdadeiros. Isto garantirá que faças descarga de todos os temporizadores pendentes antes de alternares para os temporizadores verdadeiros. Se não prosseguires os temporizadores e apenas alternares para os temporizadores verdadeiros, as tarefas agendadas não serão executadas e receberás um comportamento inesperado. Isto é na sua maioria importante para os terceiros que agendam tarefas sem estares ciente destas.
 
-Here's an example of doing that using jest:
+No bloco de código abaixo está um exemplo fazendo isto usando a Jest:
 
 ```js
-// Running all pending timers and switching to real timers using Jest
+// Executando todos os temporizadores pendentes e
+// alternando para os temporizadores verdadeiros usando a Jest
 afterEach(() => {
   jest.runOnlyPendingTimers()
   jest.useRealTimers()
