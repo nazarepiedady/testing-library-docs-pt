@@ -3,7 +3,7 @@ id: example-react-router
 title: React Router
 ---
 
-This example demonstrates React Router v6. For previous versions see below.
+Este exemplo demonstra a React Router v6. Para versões anteriores consulte abaixo.
 
 ```jsx
 // app.js
@@ -52,10 +52,10 @@ test('full app rendering/navigating', async () => {
   render(<App />, {wrapper: BrowserRouter})
   const user = userEvent.setup()
 
-  // verify page content for default route
+  // verificar o conteúdo da página para rota padrão
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
-  // verify page content for expected route after navigating
+  // verificar o conteúdo da página para a rota esperada depois da navegação
   await user.click(screen.getByText(/about/i))
   expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
 })
@@ -63,39 +63,38 @@ test('full app rendering/navigating', async () => {
 test('landing on a bad page', () => {
   const badRoute = '/some/bad/route'
 
-  // use <MemoryRouter> when you want to manually control the history
+  // usar "<MemoryRouter>" quando quiseres controlar manualmente a história
   render(
     <MemoryRouter initialEntries={[badRoute]}>
       <App />
     </MemoryRouter>,
   )
 
-  // verify navigation to "no match" route
+  // verificar a navegação para a rota "no match"
   expect(screen.getByText(/no match/i)).toBeInTheDocument()
 })
 
 test('rendering a component that uses useLocation', () => {
   const route = '/some-route'
 
-  // use <MemoryRouter> when you want to manually control the history
+  // usar "<MemoryRouter>" quando quiseres controlar manualmente a história
   render(
     <MemoryRouter initialEntries={[route]}>
       <LocationDisplay />
     </MemoryRouter>,
   )
 
-  // verify location display is rendered
+  // verificar se a exibição da localização está apresentada
   expect(screen.getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
 
-## Reducing boilerplate
+## Reduzindo o prato cozido
 
-1. If you find yourself adding Router components to your tests a lot, you may
-   want to create a helper function that wraps around `render`.
+1. Se encontrares-te a ti mesmo adicionando muitos componentes de Router aos teus testes, talvez queiras criar uma função auxiliar que envolva em torno de `render`.
 
 ```jsx
-// test utils file
+// ficheiro de utilitário de teste
 const renderWithRouter = (ui, {route = '/'} = {}) => {
   window.history.pushState({}, 'Test page', route)
 
@@ -131,7 +130,7 @@ test('rendering a component that uses useLocation', () => {
 })
 ```
 
-## Testing Library and React Router v5
+## Testing Library e a React Router v5
 
 ```jsx
 // app.js
@@ -167,9 +166,7 @@ export const App = () => (
 )
 ```
 
-In your tests, pass the history object as a whole to the Router component.
-**Note:** React Router v5 [only works with History v4](https://github.com/remix-run/history#documentation),
-so make sure you have the correct version of `history` installed.
+Nos teus testes, passe o objeto da história globalmente para o componente de Router. **Nota:** a React Router v5 [apenas funciona com History v4](https://github.com/remix-run/history#documentation), então certifica-te de que tens a versão correta de `history` instalada.
 
 ```jsx
 // app.test.js
@@ -191,13 +188,14 @@ test('full app rendering/navigating', async () => {
     </Router>,
   )
   const user = userEvent.setup()
-  // verify page content for expected route
-  // often you'd use a data-testid or role query, but this is also possible
+  // verificar o conteúdo da página para a rota
+  // frequentemente usarias uma "data-testid" ou consulta de rótulo,
+  // mas isto também é possível
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
   await user.click(screen.getByText(/about/i))
 
-  // check that the content changed to the new page
+  // verificar se o conteúdo mudou para a nova página
   expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
 })
 
