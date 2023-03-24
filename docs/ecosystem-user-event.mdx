@@ -6,20 +6,15 @@ title: user-event v13
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
-[`user-event`][gh] is a companion library for Testing Library that provides more
-advanced simulation of browser interactions than the built-in
-[`fireEvent`](dom-testing-library/api-events.mdx#fireevent) method.
+A [`user-event`][gh] é uma biblioteca acompanhante para Testing Library que fornece simulação mais avançada de interações do navegador do que o método [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) embutido.
 
-:::caution End of life
+:::caution Fim da Vida
 
-This page describes `user-event@13.5.0`.  
-This version is no longer maintained. Please use
-[`user-event@14`](user-event/intro.mdx) instead, as it includes important bug
-fixes and new features.
+Esta página descreve a `user-event@13.5.0`. Esta versão já não é mantida. Use a versão mais recente [`user-event@14`](user-event/intro.mdx) no lugar daquela, já que inclui correções de erro importante e novas funcionalidades.
 
 :::
 
-## Installation
+## Instalação
 
   <Tabs defaultValue="npm" values={[{ label: 'npm', value: 'npm' }, { label: 'Yarn', value: 'yarn' }]}>
   <TabItem value="npm">
@@ -38,28 +33,23 @@ yarn add --dev @testing-library/user-event @testing-library/dom
   </TabItem>
   </Tabs>
 
-Now simply import it in your tests:
+Agora simplesmente importe-a nos teus testes:
 
 ```js
 import userEvent from '@testing-library/user-event'
 
-// or
+// ou
 
 const {default: userEvent} = require('@testing-library/user-event')
 ```
 
 ## API
 
-Note: All userEvent methods are synchronous with one exception: when `delay`
-option used with `userEvent.type` as described below. We also discourage using
-`userEvent` inside `before/after` blocks at all, for important reasons described
-in
-["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
+Nota: Todos os métodos de `userEvent` são síncronos com um exceção: quando a opção `delay` é usada com a `userEvent.type` conforme descrita abaixo. Nós também desencorajamos de todo usar `userEvent` dentro dos blocos `before/after`, por motivos importantes descritos na ["Evite Encaixamento Quando Estiveres a Testar"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
 
 ### `click(element, eventInit, options)`
 
-Clicks `element`, depending on what `element` is clicked, calling `click()` can
-have different side effects.
+Clica sobre o `element`, dependendo de qual `element` for clicado, chamar `click()` pode ter diferentes efeitos colaterais:
 
 ```jsx
 import React from 'react'
@@ -79,31 +69,25 @@ test('click', () => {
 })
 ```
 
-You can also ctrlClick / shiftClick etc with
+Tu podes também manipular `ctrlClick` ou `shiftClick` etc. Com:
 
 ```js
 userEvent.click(elem, {ctrlKey: true, shiftKey: true})
 ```
 
-See the
-[`MouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent)
-constructor documentation for more options.
+Consulte a documentação do construtor [`MouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent) para mais opções.
 
-Note that `click` will trigger hover events before clicking. To disable this,
-set the `skipHover` option to `true`.
+Nota que `click` acionará eventos de "pairar sobre" antes de clicar. Para desativar isto, defina a opção `skipHover` para `true`.
 
-#### Pointer events options
+#### Opções dos eventos de Ponteiro
 
-Trying to click an element with `pointer-events` being set to `"none"` (i.e.
-unclickable) will throw an error. If you want to disable this behavior you can
-set `skipPointerEventsCheck` to `true`:
+Tentar clicar sobre um elemento com `pointer-events` sendo definido para `"none"` (por exemplo, não clicável) lançará um erro. Se quiseres desativar este comportamento podes definir `skipPointerEventsCheck` para `true`:
 
 ```js
 userEvent.click(elem, undefined, {skipPointerEventsCheck: true})
 ```
 
-The `skipPointerEventsCheck` option can be passed to any pointer related API
-including:
+A opção `skipPointerEventsCheck` pode ser passada para qualquer API relacionada ao ponteiro incluindo:
 
 - [dblClick](#dblclickelement-eventinit-options)
 - [hover](#hoverelement-options)
@@ -113,8 +97,7 @@ including:
 
 ### `dblClick(element, eventInit, options)`
 
-Clicks `element` twice, depending on what `element` is it can have different
-side effects.
+Clica sobre o `elemento` duas vezes, dependendo de qual `element` é clicado pode ter diferentes efeitos colaterais:
 
 ```jsx
 import React from 'react'
@@ -131,11 +114,11 @@ test('double click', () => {
 })
 ```
 
-Note: `options` includes [Pointer events options](#pointer-events-options)
+Nota: `options` incluem [opções dos eventos de Ponteiro](#opções-dos-eventos-do-ponteiro)
 
 ### `type(element, text, [options])`
 
-Writes `text` inside an `<input>` or a `<textarea>`.
+Escreve o `text` dentro de um `<input>`ou um `<textarea>`:
 
 ```jsx
 import React from 'react'
@@ -150,53 +133,41 @@ test('type', () => {
 })
 ```
 
-`options.delay` is the number of milliseconds that pass between two characters
-are typed. By default it's 0. You can use this option if your component has a
-different behavior for fast or slow users. If you do this, you need to make sure
-to `await`!
+A `options.delay` é o número de milissegundos que passam entre dois caracteres que são digitados. Por padrão é 0. Tu podes usar esta opção se o teu componente tiver um comportamento diferente para utilizadores rápidos ou lentos. Se fizeres isto, precisaras de certificar-te de `await` (esperar)!
 
-`type` will click the element before typing. To disable this, set the
-`skipClick` option to `true`.
+A `type` clicará sobre o elemento antes de digitar. Para desativar isto, defina a opção `skipClick` para `true`.
 
-#### Special characters
+#### Os caracteres especiais
 
-The following special character strings are supported:
+As seguintes sequências de caracteres de carácter especial são suportas:
 
-| Text string    | Key        | Modifier           | Notes                                                                                                                                                               |
+| Sequência de caracteres de texto    | Tecla       | Modificador           | Notas                                                                                                                                                              |
 | -------------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `{enter}`      | Enter      | N/A                | Will insert a newline character (`<textarea />` only).                                                                                                              |
+| `{enter}`      | Enter      | N/A                | Inserirá um carácter de nova linha (apenas `<textarea />`).                                                                                                              |
 | `{space}`      | `' '`      | N/A                |                                                                                                                                                                     |
 | `{esc}`        | Escape     | N/A                |                                                                                                                                                                     |
-| `{backspace}`  | Backspace  | N/A                | Will delete the previous character (or the characters within the `selectedRange`, see example below).                                                               |
-| `{del}`        | Delete     | N/A                | Will delete the next character (or the characters within the `selectedRange`, see example below)                                                                    |
-| `{selectall}`  | N/A        | N/A                | Selects all the text of the element. Note that this will only work for elements that support selection ranges (so, not `email`, `password`, `number`, among others) |
+| `{backspace}`  | Backspace  | N/A                | Eliminará o carácter anterior (ou os caracteres dentro do `selectedRange`, consulte o exemplo abaixo).                                                               |
+| `{del}`        | Delete     | N/A                | Eliminará o próximo carácter (ou os caracteres dentro do `selectedRange`, consulte o exemplo abaixo).                                                                    |
+| `{selectall}`  | N/A        | N/A                | Seleciona todo o texto do elemento. Nota que isto apenas funcionará para elementos que suportam os limites de seleção (então, nem `email`, `password`, `number`, entre outros). |
 | `{arrowleft}`  | ArrowLeft  | N/A                |                                                                                                                                                                     |
 | `{arrowright}` | ArrowRight | N/A                |                                                                                                                                                                     |
 | `{arrowup}`    | ArrowUp    | N/A                |                                                                                                                                                                     |
 | `{arrowdown}`  | ArrowDown  | N/A                |                                                                                                                                                                     |
 | `{home}`       | Home       | N/A                |                                                                                                                                                                     |
 | `{end}`        | End        | N/A                |                                                                                                                                                                     |
-| `{shift}`      | Shift      | `shiftKey`         | Does **not** capitalize following characters.                                                                                                                       |
+| `{shift}`      | Shift      | `shiftKey`         | **Não** escreve com maiúsculas os caracteres seguintes.                                                                                                                       |
 | `{ctrl}`       | Control    | `ctrlKey`          |                                                                                                                                                                     |
 | `{alt}`        | Alt        | `altKey`           |                                                                                                                                                                     |
 | `{meta}`       | OS         | `metaKey`          |                                                                                                                                                                     |
-| `{capslock}`   | CapsLock   | `modifierCapsLock` | Fires both keydown and keyup when used (simulates a user clicking their "Caps Lock" button to enable caps lock).                                                    |
+| `{capslock}`   | CapsLock   | `modifierCapsLock` | Dispara ambos `keydown` (pressionar) e `keyup` (soltar) quando usada (simula um utilizadores a clicarem sobre os seus botões "Caps Lock" para ativar o "Caps Lock").                                                    |
 
-> **A note about modifiers:** Modifier keys (`{shift}`, `{ctrl}`, `{alt}`,
-> `{meta}`) will activate their corresponding event modifiers for the duration
-> of type command or until they are closed (via `{/shift}`, `{/ctrl}`, etc.). If
-> they are not closed explicitly, then events will be fired to close them
-> automatically (to disable this, set the `skipAutoClose` option to `true`).
+> **Um nota a respeito dos modificadores:** As teclas modificadora ({shift}`, `{ctrl}`, `{alt}`, `{meta}`) ativarão os seus modificadores de evento correspondente para a duração do comando de digitar ou até serem fechados (através de `{/shift}`, `{/ctrl}`, etc.). Se não forem fechadas explicitamente, então os eventos serão disparados para fechá-las automaticamente (para desativar isto, defina a opção `skipAutoClose` para `true`).
 
 <!-- space out these notes -->
 
-> We take the same
-> [stance as Cypress](https://docs.cypress.io/api/commands/type.html#Modifiers)
-> in that we do not simulate the behavior that happens with modifier key
-> combinations as different operating systems function differently in this
-> regard.
+> Nós partilhamos da mesma [postura que a Cypress](https://docs.cypress.io/api/commands/type.html#Modifiers) em que não simulamos o comportamento que acontece com as combinações de tecla modificadora já que diferentes sistemas operacionais funcionam diferentemente neste aspeto.
 
-An example of an usage with a selection range:
+Um exemplo de um uso com um limite de seleção:
 
 ```jsx
 import React from 'react'
@@ -217,9 +188,7 @@ test('delete characters within the selectedRange', () => {
   expect(input).toHaveValue('This is a good example')
 ```
 
-By default, `type` appends to the existing text. To prepend text, reset the
-element's selection range and provide the `initialSelectionStart` and
-`initialSelectionEnd` options:
+Por padrão, `type` anexa no final ao texto existente. Para anexar no início do texto, reinicie o limite de seleção do elemento e forneça as opções `initialSelectionStart` e `initialSelectionEnd`:
 
 ```jsx
 import React from 'react'
@@ -230,7 +199,7 @@ test('prepend text', () => {
   render(<input defaultValue="World!" />)
   const element = screen.getByRole('textbox')
 
-  // Prepend text
+  // Anexar ao início do texto
   element.setSelectionRange(0, 0)
   userEvent.type(element, 'Hello, ', {
     initialSelectionStart: 0,
@@ -241,10 +210,9 @@ test('prepend text', () => {
 })
 ```
 
-#### `<input type="time" />` support
+#### Suporte de `<input type="time" />`
 
-The following is an example of usage of this library with
-`<input type="time" />`
+O bloco seguinte é um exemplo de uso desta biblioteca com o `<input type="time" />`:
 
 ```jsx
 import React from 'react'
@@ -266,82 +234,69 @@ test('types into the input', () => {
 
 ### `keyboard(text, options)`
 
-Simulates the keyboard events described by `text`. This is similar to
-`userEvent.type()` but without any clicking or changing the selection range.
+Simula os eventos de teclado descritos pelo `text`. Isto é parecido com `userEvent.type()` mas sem qualquer clique ou mudança do limite de seleção.
 
-> You should use `userEvent.keyboard` if you want to just simulate pressing
-> buttons on the keyboard. You should use `userEvent.type` if you just want to
-> conveniently insert some text into an input field or textarea.
+> Tu deves usar `userEvent.keyboard` se quiseres apenas simular o pressionar de botões no teclado. Tu deves usar `userEvent.type` se apenas quiseres inserir convenientemente algum texto dentro de um campo de entrada ou área de texto.
 
-Keystrokes can be described:
+Os toques nas teclas podem ser descritos:
 
-- Per printable character
+- Por carácter passível de impressão:
+
   ```js
-  userEvent.keyboard('foo') // translates to: f, o, o
+  userEvent.keyboard('foo') // traduz para: f, o, o
   ```
-  The brackets `{` and `[` are used as special character and can be referenced
-  by doubling them.
+
+  Os parêntesis `{` e `[` são usados como carácter especial e podem ser referenciados duplicando-os:
+
   ```js
   userEvent.keyboard('{{a[[') // translates to: {, a, [
   ```
-- Per
-  [KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
-  (only supports alphanumeric values of `key`)
+- Por [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) (apenas suporta os valores alfanumérico de `key`):
+
   ```js
-  userEvent.keyboard('{Shift}{f}{o}{o}') // translates to: Shift, f, o, o
+  userEvent.keyboard('{Shift}{f}{o}{o}') // traduz para: Shift, f, o, o
   ```
-  This does not keep any key pressed. So `Shift` will be lifted before pressing
-  `f`.
-- Per
-  [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+
+  Isto não mantém qualquer tecla pressionada. Então `Shift` será levantada antes de pressionar `f`.
+
+- Por [`KeyboardEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+
   ```js
-  userEvent.keyboard('[ShiftLeft][KeyF][KeyO][KeyO]') // translates to: Shift, f, o, o
+  userEvent.keyboard('[ShiftLeft][KeyF][KeyO][KeyO]') // traduz para: Shift, f, o, o
   ```
-- Per legacy `userEvent.type` modifier/specialChar The modifiers like `{shift}`
-  (note the lowercase) will automatically be kept pressed, just like before. You
-  can cancel this behavior by adding a `/` to the end of the descriptor.
+- Por carácter especial ou modificador de `userEvent.type` legado. Os modificadores como `{shift}` (nota as minúsculas) serão automaticamente mantidos pressionados, tal como antes. Tu podes cancelar este comportamento adicionando um `/` ao final do descritor.
+
   ```js
   userEvent.keyboard('{shift}{ctrl/}a{/shift}') // translates to: Shift(down), Control(down+up), a, Shift(up)
   ```
 
-Keys can be kept pressed by adding a `>` to the end of the descriptor - and
-lifted by adding a `/` to the beginning of the descriptor:
+As teclas podem ser mantidas pressionadas adicionando a `>` ao final do descritor - e levantada adicionando um `/` ao início do descritor:
 
 ```js
-userEvent.keyboard('{Shift>}A{/Shift}') // translates to: Shift(down), A, Shift(up)
+userEvent.keyboard('{Shift>}A{/Shift}') // traduz para: Shift(down), A, Shift(up)
 ```
 
-`userEvent.keyboard` returns a keyboard state that can be used to continue
-keyboard operations.
+A `userEvent.keyboard` retornam um estado do teclado que pode ser usado para continuar as operações de teclado.
 
 ```js
-const keyboardState = userEvent.keyboard('[ControlLeft>]') // keydown [ControlLeft]
-// ... inspect some changes ...
-userEvent.keyboard('a', {keyboardState}) // press [KeyA] with active ctrlKey modifier
+const keyboardState = userEvent.keyboard('[ControlLeft>]') // pressionar [ControlLeft]
+// ... inspecionar algumas mudanças ...
+userEvent.keyboard('a', {keyboardState}) // pressionar [KeyA] com o modificador "ctrlKey" ativo
 ```
 
-The mapping of `key` to `code` is performed by a
-[default key map](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)
-portraying a "default" US-keyboard. You can provide your own local keyboard
-mapping per option.
+O mapeamento de `key` para `code` é realizado por um [mapa de tecla padrão](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts) descrevendo um teclado US "padrão". Tu podes fornecer o teu próprio mapeamento de teclado local por opção:
 
 ```js
 userEvent.keyboard('?', {keyboardMap: myOwnLocaleKeyboardMap})
 ```
 
-> Future versions might try to interpolate the modifiers needed to reach a
-> printable key on the keyboard. E.g. Automatically pressing `{Shift}` when
-> CapsLock is not active and `A` is referenced. If you don't wish this behavior,
-> you can pass `autoModify: false` when using `userEvent.keyboard` in your code.
+> As versões futuras podem tentar interpolar os modificadores necessários para alcançar uma tecla passível de impressão no teclado. Por exemplo, automaticamente pressionado `{Shift}` quando "CapsLock" não estiver ativo e `A` é referenciado. Se não desejas este comportamento, podes passar `autoModify: false` quando estiveres a usar `userEvent.keyboard` no teu código.
 
 ### `upload(element, file, [{ clickInit, changeInit }], [options])`
 
-Uploads file to an `<input>`. For uploading multiple files use `<input>` with
-the `multiple` attribute and the second `upload` argument as an array. It's also
-possible to initialize a click or change event using a third argument.
+Carrega o ficheiro para um `<input>`. Para carregar vários ficheiros use o `<input>` com o atributo `multiple` e o segundo argumento `upload` como um arranjo. Também é possível inicializar um evento de clique ou mudança usando um terceiro argumento.
 
-If `options.applyAccept` is set to `true` and there is an `accept` attribute on
-the element, files that don't match will be discarded.
+Se `options.applyAccept` for definido para `true` e houver um atributo `accept` no elemento, os ficheiros que não correspondem serão descartados:
 
 ```jsx
 import React from 'react'
@@ -388,7 +343,7 @@ test('upload multiple files', () => {
 
 ### `clear(element)`
 
-Selects the text inside an `<input>` or `<textarea>` and deletes it.
+Seleciona o texto dentro de um `<input>` ou `<textarea>` e eliminá-o.
 
 ```jsx
 import React from 'react'
@@ -405,8 +360,7 @@ test('clear', () => {
 
 ### `selectOptions(element, values, options)`
 
-Selects the specified option(s) of a `<select>` or a `<select multiple>`
-element.
+Seleciona a opção ou opções especificada de um elemento `<select>` ou `<select multiple>`:
 
 ```jsx
 import React from 'react'
@@ -430,10 +384,9 @@ test('selectOptions', () => {
 })
 ```
 
-The `values` parameter can be either an array of values or a singular scalar
-value.
+O parâmetro `values` pode ser tanto um arranjo de valores ou um valor escalar singular.
 
-It also accepts option nodes:
+Ele também aceita nós de opção:
 
 ```js
 userEvent.selectOptions(screen.getByTestId('select-multiple'), [
@@ -442,12 +395,11 @@ userEvent.selectOptions(screen.getByTestId('select-multiple'), [
 ])
 ```
 
-Note: `options` includes [Pointer events options](#pointer-events-options)
+Nota: `options` inclui as [opções dos eventos de ponteiro](#opões-dos-eventos-de-ponteiro)
 
 ### `deselectOptions(element, values, options)`
 
-Remove the selection for the specified option(s) of a `<select multiple>`
-element.
+Remove a seleção para a opção ou opções especificadas de um elemento `<select multiple>`:
 
 ```jsx
 import * as React from 'react'
@@ -467,34 +419,25 @@ test('deselectOptions', () => {
   expect(screen.getByText('B').selected).toBe(true)
   userEvent.deselectOptions(screen.getByRole('listbox'), '2')
   expect(screen.getByText('B').selected).toBe(false)
-  // can do multiple at once as well:
+  // também podes fazer vários de uma vez:
   // userEvent.deselectOptions(screen.getByRole('listbox'), ['1', '2'])
 })
 ```
 
-The `values` parameter can be either an array of values or a singular scalar
-value.
+O parâmetro `values` pode ser tanto um arranjo de valores ou um valor escalar singular.
 
-Note: `options` includes [Pointer events options](#pointer-events-options)
+Nota: `options` inclui as [opções dos eventos de ponteiro](#opões-dos-eventos-de-ponteiro)
 
 ### `tab({shift, focusTrap})`
 
-Fires a tab event changing the document.activeElement in the same way the
-browser does.
+Dispara um evento de tabulação mudando o `document.activeElement` da mesma maneira que o navegador faz.
 
-Options:
+Opções:
 
-- `shift` (default `false`) can be true or false to invert tab direction.
-- `focusTrap` (default `document`) a container element to restrict the tabbing
-  within.
+- `shift` (predefinido como `false`) pode ser `true` ou `false` para inverter a direção da tabulação.
+- `focusTrap` (predefinido como `document`) um elemento contentor para restringir a tabulação por dentro de.
 
-> **A note about tab**:
-> [jsdom does not support tabbing](https://github.com/jsdom/jsdom/issues/2102),
-> so this feature is a way to enable tests to verify tabbing from the end user's
-> perspective. However, this limitation in jsdom will mean that components like
-> [focus-trap-react](https://github.com/davidtheclark/focus-trap-react) will not
-> work with `userEvent.tab()` or jsdom. For that reason, the `focusTrap` option
-> is available to let you ensure your user is restricted within a focus-trap.
+> **Um nota sobre a tabulação**: [`jsdom` não suporta a tabulação](https://github.com/jsdom/jsdom/issues/2102), assim esta funcionalidade é uma maneira de ativar os testes para verificar a tabulação a partir da perspetiva do utilizador final. No entanto, esta limitação na `jsdom` são significa que os componentes como [`focus-trap-react`](https://github.com/davidtheclark/focus-trap-react) não funcionarão com `userEvent.tab()` ou `jsdom`. Para esta razão, a opção `focusTrap` está disponível para permitir-te assegurar que o teu utilizador está restrito dentro de uma `focus-trap`.
 
 ```jsx
 import React from 'react'
@@ -529,7 +472,7 @@ it('should cycle elements in document tab order', () => {
 
   userEvent.tab()
 
-  // cycle goes back to the body element
+  // o ciclo volta para o elemento de corpo
   expect(document.body).toHaveFocus()
 
   userEvent.tab()
@@ -540,7 +483,7 @@ it('should cycle elements in document tab order', () => {
 
 ### `hover(element, options)`
 
-Hovers over `element`.
+Paira sobre o `element`:
 
 ```jsx
 import React from 'react'
@@ -563,19 +506,19 @@ test('hover', () => {
 })
 ```
 
-Note: `options` includes [Pointer events options](#pointer-events-options)
+Nota: a `options` inclui [opções dos eventos de ponteiro](#opções-dos-eventos-de-ponteiro).
 
 ### `unhover(element, options)`
 
-Unhovers out of `element`.
+Para o pairar sobre o `elemento`
 
-> See [above](#hoverelement) for an example
+> Consulte o bloco [acima](#hoverelement) por um exemplo.
 
-Note: `options` includes [Pointer events options](#pointer-events-options)
+Nota: a `options` inclui [opções dos eventos de ponteiro](#opções-dos-eventos-de-ponteiro).
 
 ### `paste(element, text, eventInit, options)`
 
-Allows you to simulate the user pasting some text into an input.
+Permite-te simular o utilizador colando algum texto dentro de uma entrada.
 
 ```javascript
 test('should paste text in input', () => {
@@ -588,15 +531,14 @@ test('should paste text in input', () => {
 })
 ```
 
-You can use the `eventInit` if what you're pasting should have `clipboardData`
-(like `files`).
+Tu podes usar o `eventInit` se o que estás a colar deveria ter `clipboardData` (como `files`).
 
 ### `specialChars`
 
-A handful set of special characters used in [type](#typeelement-text-options)
-method.
 
-| Key        | Character      |
+Um conjunto de meia dúzia de caracteres especiais usados no método [type](#typeelement-text-options):
+
+| Tecla      | Carácter       |
 | ---------- | -------------- |
 | arrowLeft  | `{arrowleft}`  |
 | arrowRight | `{arrowright}` |
@@ -612,7 +554,7 @@ method.
 | space      | `{space}`      |
 | whitespace | `' '`          |
 
-Usage example:
+Exemplo de uso:
 
 ```jsx
 import React, { useState } from 'react'
