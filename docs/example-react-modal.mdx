@@ -1,6 +1,6 @@
 ---
 id: example-react-modal
-title: Modals
+title: Modais
 ---
 
 ```jsx
@@ -34,22 +34,22 @@ const Modal = ({onClose, children}) => {
 }
 
 test('modal shows the children and a close button', () => {
-  // Arrange
+  // Arranjar
   const handleClose = jest.fn()
 
-  // Act
+  // Agir
   const {getByText} = render(
     <Modal onClose={handleClose}>
       <div>test</div>
     </Modal>,
   )
-  // Assert
+  // Afirmar
   expect(getByText('test')).toBeTruthy()
 
-  // Act
+  // Agir
   fireEvent.click(getByText(/close/i))
 
-  // Assert
+  // Afirmar
   expect(handleClose).toHaveBeenCalledTimes(1)
 })
 ```
