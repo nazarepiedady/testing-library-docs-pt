@@ -1,13 +1,12 @@
 ---
 id: example-input-event
-title: Input Event
-sidebar_label: Input Event
+title: Evento de Entrada
+sidebar_label: Evento de Entrada
 ---
 
-> **Note**
+> **Nota**
 >
-> If you want to simulate a more natural typing behaviour while testing your
-> component, consider the companion library [`user-event`](user-event/intro.mdx)
+> Se quiseres simular um comportamento de digitação mais natural enquanto testas o teu componente, considere a biblioteca acompanhante [`user-event`](user-event/intro.mdx).
 
 ```jsx
 import React, {useState} from 'react'
@@ -52,15 +51,15 @@ test('It should allow a $ to be in the input when the value is changed', () => {
 
 test('It should not allow letters to be inputted', () => {
   const {input} = setup()
-  expect(input.value).toBe('') // empty before
+  expect(input.value).toBe('') // vazia antes
   fireEvent.change(input, {target: {value: 'Good Day'}})
-  expect(input.value).toBe('') //empty after
+  expect(input.value).toBe('') // vazia depois
 })
 
 test('It should allow the $ to be deleted', () => {
   const {input} = setup()
   fireEvent.change(input, {target: {value: '23'}})
-  expect(input.value).toBe('$23') // need to make a change so React registers "" as a change
+  expect(input.value).toBe('$23') // precisa de fazer uma mudança assim React regista "" como uma mudança
   fireEvent.change(input, {target: {value: ''}})
   expect(input.value).toBe('')
 })
