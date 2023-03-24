@@ -1,15 +1,14 @@
 ---
 id: example-drag
-title: Drag
-sidebar_label: Drag
+title: Arrastar
+sidebar_label: Arrastar
 ---
 
-> **Note**
+> **Nota**
 >
-> This example only works with a real browser (not with jsdom, as it does not
-> support `getBoundingClientRect`).
+> Este exemplo apenas funciona com um navegador verdadeiro (não com a `jsdom`, já que não suporta a `getBoundingClientRect`).
 
-# Usage
+# Uso
 
 ```js
 await drag(slider, {
@@ -17,11 +16,11 @@ await drag(slider, {
 })
 ```
 
-# Capture
+# Captura
 
 ![slider-testing-lib](https://user-images.githubusercontent.com/880132/80156530-0efc8f00-85bc-11ea-902c-c4e0f11a2579.gif)
 
-# Code
+# Código
 
 ```js
 import {fireEvent} from '@testing-library/dom'
@@ -34,9 +33,9 @@ function isElement(obj) {
   let prototypeStr, prototype
   do {
     prototype = Object.getPrototypeOf(obj)
-    // to work in iframe
+    // para funcionar dentro de um iframe
     prototypeStr = Object.prototype.toString.call(prototype)
-    // '[object Document]' is used to detect document
+    // '[object Document]' é usado para detetar o documento
     if (
       prototypeStr === '[object Element]' ||
       prototypeStr === '[object Document]'
@@ -44,7 +43,7 @@ function isElement(obj) {
       return true
     }
     obj = prototype
-    // null is the terminal of object
+    // 'null' é o terminal do objeto
   } while (prototype !== null)
   return false
 }
