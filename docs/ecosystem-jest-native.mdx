@@ -4,9 +4,7 @@ title: jest-native
 sidebar_label: jest-native
 ---
 
-[`Jest Native`](https://github.com/testing-library/jest-native) is a companion
-library for `React Native Testing Library` that provides custom element matchers
-for Jest.
+A [`Jest Native`](https://github.com/testing-library/jest-native) é uma biblioteca acompanhante para `React Native Testing Library` que fornece correspondes de elemento personalizados para Jest:
 
 ```bash npm2yarn
 npm install --save-dev @testing-library/jest-native
@@ -25,13 +23,8 @@ const {queryByTestId} = render(
 expect(queryByTestId('not-empty')).not.toBeEmpty()
 ```
 
-> Note: when using some of these matchers, you may need to make sure you use a
-> query function (like `queryByTestId`) rather than a get function (like
-> `getByTestId`). Otherwise the `get*` function could throw an error before your
-> assertion.
+> Nota: quando estiveres a usar alguns destes correspondentes, talvez precises de certificar-te de usar uma função de consulta (como `queryByTestId`) ao invés da função de recuperação (como `getByTestId`). De outro modo a função `get*` poderia lançar um erro antes da tua afirmação.
 
-Check out
-[Jest Native's documentation](https://github.com/testing-library/jest-native)
-for a full list of available matchers.
+Consulte a [documentação da Jest Native](https://github.com/testing-library/jest-native) para teres acesso a uma lista completa de correspondentes disponíveis.
 
-- [Jest Native on GitHub](https://github.com/testing-library/jest-native)
+- [Jest Native na GitHub](https://github.com/testing-library/jest-native)
