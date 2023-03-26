@@ -1,104 +1,86 @@
 ---
 id: guide-disappearance
-title: Appearance and Disappearance
+title: Aparecimento e Desaparecimento
 ---
 
-Sometimes you need to test that an element is present and then disappears or
-vice versa.
+Algumas vezes precisas de testar se um elemento está presente e depois desaparece ou vice-versa.
 
-## Waiting for appearance
+## Aguardar pelo aparecimento
 
-If you need to wait for an element to appear, the [async wait
-utilities][async-api] allow you to wait for an assertion to be satisfied before
-proceeding. The wait utilities retry until the query passes or times out. _The
-async methods return a Promise, so you must always use `await` or `.then(done)`
-when calling them._
+Se precisares de esperar por um elemento aparecer, os [utilitários de `async/await`][async-api] permite-te esperar por uma afirmação ser satisfeita antes de prosseguir. Os utilitários de espera voltam a entrar até a consulta passar ou pausar. _Os métodos assíncronos retornam uma promessa, então deves sempre usar `await` ou `.then(done)` quando estiveres a chamá-los._
 
-### 1. Using `findBy` Queries
+### 1. Usando Consultas de `findBy`
 
 ```jsx
 test('movie title appears', async () => {
-  // element is initially not present...
-  // wait for appearance and return the element
+  // o elemento não está inicialmente presente...
+  // esperar pelo aparecimento e retornar o elemento
   const movie = await findByText('the lion king')
 })
 ```
 
-### 2. Using `waitFor`
+### 2. Usando `waitFor`
 
 ```jsx
 test('movie title appears', async () => {
-  // element is initially not present...
+  // // o elemento não está inicialmente presente...
 
-  // wait for appearance inside an assertion
+  // esperar pelo aparecimento dentro de uma afirmação
   await waitFor(() => {
     expect(getByText('the lion king')).toBeInTheDocument()
   })
 })
 ```
 
-## Waiting for disappearance
+## Aguardar pelo desaparecimento
 
-The `waitForElementToBeRemoved` [async helper][async-api] function uses a
-callback to query for the element on each DOM mutation and resolves to `true`
-when the element is removed.
+A função [auxiliar assíncrona][async-api] `waitForElementToBeRemoved` usa uma função de resposta para consultar pelo elemento em cada mutação do DOM e resolver para `true` quando o elemento for removido:
 
 ```jsx
 test('movie title no longer present in DOM', async () => {
-  // element is removed
+  // o elemento é removido
   await waitForElementToBeRemoved(() => queryByText('the mummy'))
 })
 ```
 
-Using
-[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
-is more efficient than polling the DOM at regular intervals with `waitFor`.
+Usar a [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) é mais eficiente do que sondar o DOM em intervalos regulares com `waitFor`.
 
-The `waitFor` [async helper][async-api] function retries until the wrapped
-function stops throwing an error. This can be used to assert that an element
-disappears from the page.
+A função [auxiliar assíncrona][async-api] `waitFor` volta a tentar até a função envolvida parar de lançar um erro. Isto pode ser usado para afirmar que um elemento desaparece da página:
 
 ```jsx
 test('movie title goes away', async () => {
-  // element is initially present...
-  // note use of queryBy instead of getBy to return null
-  // instead of throwing in the query itself
+  // o elemento está inicialmente presente...
+  // notar o uso da queryBy ao invés de getBy para retornar nulo
+  // ao invés de oferecer a própria consulta
   await waitFor(() => {
     expect(queryByText('i, robot')).not.toBeInTheDocument()
   })
 })
 ```
 
-## Asserting elements are not present
+### Afirmar que os elementos não estão presentes
 
-The standard `getBy` methods throw an error when they can't find an element, so
-if you want to make an assertion that an element is _not_ present in the DOM,
-you can use `queryBy` APIs instead:
+Os métodos `getBy` padrão lançam um erro quando não poderem encontrar um elemento, então se quiseres fazer uma afirmação de que um elemento _não_ está presente no DOM, podes usar as APIs de `queryBy`:
 
 ```javascript
 const submitButton = screen.queryByText('submit')
-expect(submitButton).toBeNull() // it doesn't exist
+expect(submitButton).toBeNull() // este não existe
 ```
 
-The `queryAll` APIs version return an array of matching nodes. The length of the
-array can be useful for assertions after elements are added or removed from the
-DOM.
+A versão das APIs de `queryAll` retorna um arranjo de nós correspondentes. O tamanho do arranjo pode ser útil para afirmações depois dos elementos serem adicionados ou removidos do DOM:
 
 ```javascript
 const submitButtons = screen.queryAllByText('submit')
-expect(submitButtons).toHaveLength(0) // expect no elements
+expect(submitButtons).toHaveLength(0) // não espera nenhum elemento
 ```
 
 ### `not.toBeInTheDocument`
 
-The [`jest-dom`](ecosystem-jest-dom.mdx) utility library provides the
-`.toBeInTheDocument()` matcher, which can be used to assert that an element is
-in the body of the document, or not. This can be more meaningful than asserting
-a query result is `null`.
+A biblioteca de utilitário [`jest-dom`](ecosystem-jest-dom.mdx) fornece o correspondente `.toBeInTheDocument()`, o qual pode ser usado para afirmar que um elemento está no corpo do documento, ou não. Isto pode ser mais importante do que afirmar que resultado de uma consulta é `null`:
 
 ```javascript
 import '@testing-library/jest-dom'
-// use `queryBy` to avoid throwing an error with `getBy`
+// usar `queryBy` para evitar lançar um erro com `getBy`
 const submitButton = screen.queryByText('submit')
 expect(submitButton).not.toBeInTheDocument()
 ```
