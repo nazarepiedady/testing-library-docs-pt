@@ -3,24 +3,19 @@ id: ecosystem-bs-jest-dom
 title: bs-jest-dom
 ---
 
-[`bs-jest-dom`][gh] is a companion library for
-[`bs-react-testing-library`](bs-react-testing-library/intro.mdx) that provides
-custom DOM element matchers for Jest in [ReasonML][re] via
-[BuckleScript][bucklescript].
+A [`bs-jest-dom`][gh] é uma biblioteca acompanhante para [`bs-react-testing-library`](bs-react-testing-library/intro.mdx) que fornece correspondentes de elemento de DOM personalizados para Jest na [ReasonML][re] através da [BuckleScript][bucklescript]:
 
 ```bash npm2yarn
 npm install --save-dev bs-jest-dom
 ```
 
-- [bs-jest-dom on GitHub][gh]
+- [bs-jest-dom na GitHub][gh]
 
-Check out
-[jest-dom's documentation](https://github.com/testing-library/jest-dom) for a
-full list of available matchers.
+Consulte a [documentação da `jest-dom`](https://github.com/testing-library/jest-dom) para uma lista completa dos correspondentes disponíveis.
 
 [gh]: https://github.com/wyze/bs-jest-dom
 
-## Setup
+## Configuração
 
 ```json
 {
@@ -28,7 +23,7 @@ full list of available matchers.
 }
 ```
 
-## Example
+## Exemplo
 
 ```reason title="A_test.re"
 open Jest;
@@ -54,10 +49,9 @@ test("renders with text", () =>
 );
 ```
 
-## More Examples
+## Mais Exemplos
 
-You can find more bs-jest-dom examples at
-[wyze/bs-jest-dom/src/\_\_tests\_\_](https://github.com/wyze/bs-jest-dom/tree/master/src/__tests__).
+Tu podes encontrar mais exemplos de `bs-jest-dom` na [wyze/bs-jest-dom/src/\_\_tests\_\_](https://github.com/wyze/bs-jest-dom/tree/master/src/__tests__).
 
 [re]: https://reasonml.github.io/
 [bucklescript]: https://bucklescript.github.io/
