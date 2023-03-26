@@ -1,17 +1,18 @@
 ---
 id: example-findByText
-title: Using findByText
+title: Usando findByText
 ---
 
 ```javascript
 // src/__tests__/example.test.js
-// This is an example of how to use findByText to query for text that
-// is not visible right away
+// Isto é um exemplo de como usar findByText
+// para consultar o texto que não estiver visível imediatamente
 
 import {screen} from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
-// provides a set of custom jest matchers that you can use to extend jest
-// i.e. `.toBeVisible`
+// fornecer um conjunto de correspondentes de jest personalizados
+// que podes usar para estender a jest
+// por exemplo, `.toBeVisible`
 import '@testing-library/jest-dom'
 
 function renderApp() {
