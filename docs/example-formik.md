@@ -3,8 +3,7 @@ id: example-react-formik
 title: Formik
 ---
 
-Example based in this
-[Async Submission Formik example](https://formik.org/docs/examples/async-submission)
+O exemplo é baseado neste [exemplo de Formik de Submissão Assíncrona](https://formik.org/docs/examples/async-submission):
 
 ```jsx
 // myForm.js
