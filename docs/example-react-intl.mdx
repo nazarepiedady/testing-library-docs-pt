@@ -3,26 +3,21 @@ id: example-react-intl
 title: React Intl
 ---
 
-> **Note**
+> **Nota**
 >
-> If you want to combine setupTests with another setup you should check
-> [`setup`](react-testing-library/setup.mdx)
+> Se quiseres combinar a `setupTests` com uma outra configuração deverias verificar a [`setup`](react-testing-library/setup.mdx).
 
-## Configuring React-Intl Polyfills / Locales
+## Configurando `Polyfills` de `React-Intl` ou Locais
 
-If you're using React-Intl in your project, and you **need** to load a locale,
-You have two options:
+Se estiveres a usar a `React-Intl` no teu projeto, e **precisas** de carregar uma localização, tens duas opções:
 
-1.  When using Node 13 and higher, Intl support is now out of the box. The
-    default ICU (International Components for Unicode) option for Node is
-    `full-icu` meaning all ICU's.  
-     All you need to do is embed the set of ICU data you need:
+1. Quando estiveres a usar a Node 13 e superior, o suporte de `Intl` está agora fora da caixa. A opção padrão de Componentes Internacionais para Unicode (ICU, sigla em Inglês) para Node é `full-icu` significando todos ICUs. Tudo o que precisas de fazer é fixar o conjunto de dados de ICU precisas de:
 
     ```js
     // test-utils.js
 
     const hasFullICU = () => {
-      // That's the recommended way to test for ICU support according to Node.js docs
+      // É a maneira recomendada para testar pelo suporte de ICU de acordo com a documentação da Node.js
       try {
         const january = new Date(9e8)
         const pt = new Intl.DateTimeFormat('pt', {month: 'long'})
@@ -42,12 +37,9 @@ You have two options:
     }
     ```
 
-2.  When using Node with prior versions, the ICU default option is `small-icu`
-    meaning it includes a subset of ICU data (typically only the English
-    locale).  
-    If you do need to load a locale you have two options:
+2. Quando estiveres a usar a Node com versões anteriores, a opção padrão de ICU é `small-icu` significando que inclui um subconjunto de dados de ICU (normalmente apenas o local Inglês). Se precisares de carregar um local tens duas opções:
 
-    1. Load the Polyfills according to that language:
+    1. Carregar os `Polyfills` de acordo com a linguagem:
 
        ```js
        // test-utils.js
@@ -65,19 +57,11 @@ You have two options:
        }
        ```
 
-    2. Load the ICU's at runtime:  
-       Install the package
-       [full-icu](https://github.com/unicode-org/full-icu-npm) and inject it to
-       your test environment, you can do that by setting `NODE_ICU_DATA` before
-       calling jest: `NODE_ICU_DATA=node_modules/full-icu jest`. Doing that you
-       will give you full-icu support as shown in option 1.
+    2. Carregar os ICUs em tempo de execução: Instale o pacote [`full-icu`](https://github.com/unicode-org/full-icu-npm) e injete-o no teu ambiente de teste, podes fazer isto definindo `NODE_ICU_DATA` antes da chamada de Jest: `NODE_ICU_DATA=node_modules/full-icu jest`. Fazendo isto dar-te-ás o suporte `full-icu` como mostrado na opção 1.
 
-## Creating a custom render function
+## Criando um função interpretadora personalizada
 
-To test our translated component we can create a custom `render` function using
-the `wrapper` option as explained in the
-[setup](react-testing-library/setup.mdx) page.  
-Our custom `render` function can look like this:
+Para testar o nosso componente traduzido podemos criar uma função `render` personalizada usando a opção `wrapper` conforme explicado na página de [configuração](react-testing-library/setup.mdx). A nossa função `render` personalizada pode parecer-se com esta:
 
 ```jsx
 // test-utils.js
@@ -92,19 +76,20 @@ function render(ui, {locale = 'pt', ...renderOptions} = {}) {
   return rtlRender(ui, {wrapper: Wrapper, ...renderOptions})
 }
 
-// re-export everything
+// re-exporta tudo
 export * from '@testing-library/react'
 
-// override render method
+// sobrepõe o método `render`
 export {render}
 ```
 
-## A complete example
+## Um exemplo completo
 
 ```jsx
 import React from 'react'
 import '@testing-library/jest-dom'
-// We're importing from our own created test-utils and not RTL's
+// Estamos a importar a partir da nossa própria `test-utils` e
+// não da RTL
 import {render, screen, setupTests} from '../test-utils.js'
 import {FormattedDate} from 'react-intl'
 
@@ -130,15 +115,12 @@ test('it should render FormattedDate and have a formatted pt date', () => {
 })
 ```
 
-## Translated components testing stategy
+## Estratégia de testagem de componentes traduzidos
 
-When testing a translated component there can be different approaches for
-achieving the wanted coverage, where the aimed goal should be to allow testing
-the component in a way that will simulate the user behavior as much as posible.
+Quando estiveres a testar um componente traduzido podem existir diferentes abordagens para alcançar a cobertura desejada, onde o objetivo definido deveria ser permitir testar o componente de uma maneira que simulará o comportamento do utilizador o máximo possível:
 
-| Approach                                   | Pros                                                                                                                                                                                                                                                                                 | Cons                                                                                                                                                                                                                                                                  |
+| Abordagem                                  | Pós                                                                                                                                                                                                                                                                               | Contras                                                                                                                                                                                                                                                                 |
 | ------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Use strings from the default language      | Test is easy to read, and asserts expected default output. If you have variables in your strings, you can test that they work properly with correct output.                                                                                                                          | 1. Strings hardcoded into tests mean you have to update both tests and code for any copy changes. 2. If multiple elements have the same string/substring text, find-and-replace may be hard to use reliably.                                                          |
-| Mock the translation library               | If your library is difficult to use in the test environment, you can mock it so it is easier. For example, you can add the message ID as a data-attribute to the text so you can query by that.                                                                                      | Test code deviates from what runs in production. Tests may assert about message IDs but not enough about content, so errors are possible.                                                                                                                             |
-| Use translation library in tests           | Decouples strings from tests, so you can update the message files in one place without worrying about breaking tests. Can run tests in another language or multiple languages. `const buttonText = getNodeText(<FormattedMessage id="buttonText" defaultMessage="Hello Button" />);` | Overhead - it takes more lines of code to write the test, and you need to know the variables and message IDs to create the right strings. It's not obvious what the text actually is when you read the test code, making maintaining it harder.                       |
-| Use translation library + inline snapshots | Same as above, but by adding an inline snapshot of the string, you can read the test code and see what strings are in use, but easily update them with `jest -u` if the messages change. `expect(buttonText).toMatchInlineSnapshot("'My button text'")`                              | Tests are longer because of the extra lines. You can wrap up some of the translation-related code into a helper function to make it a little more inline-able and avoid repeating yourself, but you still need to know the message IDs and variables inside the test. |
+| Usar sequências de caracteres da linguagem padrão | O teste é fácil de ler, e afirma a saída padrão esperada. Se tens variáveis nas tuas sequências de caracteres, podes testar se funcionam apropriadamente com a saída correta. | 1. As sequências de caracteres escritas manualmente nos testes significa que tens de atualizar ambos testes e código para quaisquer mudanças da cópia. 2. Se vários elementos têm a mesmo texto de sequência de caracteres ou subsequência de caracteres, encontrar e substituir pode ser difícil de usar com confiança. | Imitar a biblioteca de tradução   | Se a tua biblioteca for difícil de usar no ambiente de teste, podes imitá-la assim é mais fácil. Por exemplo, podes adicionar um identificador de mensagem de acordo com atributo de dado para o texto assim podes consultar por esta. | Testar o código afasta-se do que executa em produção. Os testes podem afirmar sobre os identificadores da mensagem mas não o suficiente sobre o conteúdo, assim erros são possíveis. |
+| Usar a biblioteca de tradução nos testes | Separa as sequências de caracteres dos testes, assim podes atualizar os ficheiros da mensagem em um lugar sem a preocupação de quebrar os testes. Podes executar os testes em uma outra linguagem ou várias linguagens. `const buttonText = getNodeText(<FormattedMessage id="buttonText" defaultMessage="Hello Button" />);` | Despesa geral - custa mais linhas de código para escrever o teste, e precisas de conhecer as variáveis e identificadores da mensagem para criar as sequências de caracteres corretas. Não é óbvio o que o texto realmente é quando lês o código de teste, tornando mais difícil de mantê-lo. |
+| Usar a biblioteca de tradução + fotografia em linha | O mesmo que o de cima, mas adicionado uma fotografia em linha da sequência de caracteres, podes ler o código de teste e ver quais sequências de caracteres estão em uso, mas facilmente atualizá-los com `jest -u` se as mensagens mudarem. `expect(buttonText).toMatchInlineSnapshot("'My button text'")` | Os testes são mais longos por causa das linhas adicionais. Tu podes embrulhar algum do código relacionado com a tradução em uma função auxiliar para torná-lo um pouco mais em linha e evitar repetires-te, mas ainda precisas de conhecer os identificadores da mensagem e as variáveis dentro do teste. |
