@@ -10,8 +10,8 @@ import '@testing-library/jest-dom'
 import {NameContext, NameProvider, NameConsumer} from '../react-context'
 
 /**
- * Test default values by rendering a context consumer without a
- * matching provider
+ * Testar os valores padrão interpretando um consumidor de contexto sem
+ * um provedor correspondente.
  */
 test('NameConsumer shows default value', () => {
   render(<NameConsumer />)
@@ -21,9 +21,10 @@ test('NameConsumer shows default value', () => {
 })
 
 /**
- * A custom render to setup providers. Extends regular
- * render options with `providerProps` to allow injecting
- * different scenarios to test with.
+ * Um interpretador personalizado para configurar provedores.
+ * Estende as opções do interpretador com `providerProps`
+ * para permitir a injeção de cenários diferentes
+ * com os quais testar.
  *
  * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
  */
@@ -43,8 +44,8 @@ test('NameConsumer shows value from provider', () => {
 })
 
 /**
- * To test a component that provides a context value, render a matching
- * consumer as the child
+ * Para testar um componente que fornece um valor de contexto,
+ * interpreta um consumidor correspondente como filho.
  */
 test('NameProvider composes full name from first, last', () => {
   const providerProps = {
@@ -61,7 +62,7 @@ test('NameProvider composes full name from first, last', () => {
 })
 
 /**
- * A tree containing both a providers and consumer can be rendered normally
+ * Uma árvore contendo ambos fornecedor e consumidor podem ser desenhados manualmente.
  */
 test('NameProvider/Consumer shows name of character', () => {
   const wrapper = ({children}) => (
