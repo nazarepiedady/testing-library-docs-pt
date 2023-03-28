@@ -33,19 +33,19 @@ function App() {
   )
 }
 
-// Ok, so here's what your tests might look like
+// Muito bem, então aqui está aquilo com qual os teus podem se parecer 
 
-// this is a handy function that I would utilize for any component
-// that relies on the router being in context
+// isto é uma função útil que eu utilizaria para qualquer componente
+// que depende da estadia do roteador no contexto.
 function renderWithRouter(
   ui,
   {route = '/', history = createHistory(createMemorySource(route))} = {},
 ) {
   return {
     ...render(<LocationProvider history={history}>{ui}</LocationProvider>),
-    // adding `history` to the returned utilities to allow us
-    // to reference it in our tests (just try to avoid using
-    // this to test implementation details).
+    // adicionar `history` aos utilitários retornados para permitir-nos
+    // referenciá-lo nos nossos testes (só tente evitar usar isto para
+    // testar os detalhes de implementação).
     history,
   }
 }
@@ -56,11 +56,13 @@ test('full app rendering/navigating', async () => {
     history: {navigate},
   } = renderWithRouter(<App />)
   const appContainer = container
-  // normally I'd use a data-testid, but just wanted to show this is also possible
+  // normalmente usaria um `data-testid`,
+  // mas apenas queria mostrar que isto também é possível
   expect(appContainer.innerHTML).toMatch('You are home')
 
-  // with reach-router we don't need to simulate a click event, we can just transition
-  // to the page using the navigate function returned from the history object.
+  // com o `reach-router` não precisamos de simular um evento de clique,
+  // podemos apenas transitar para a página usando função de navegação retornada
+  // pelo objeto da história.
   await navigate('/about')
   expect(container.innerHTML).toMatch('You are on the about page')
 })
@@ -69,19 +71,21 @@ test('landing on a bad page', () => {
   const {container} = renderWithRouter(<App />, {
     route: '/something-that-does-not-match',
   })
-  // normally I'd use a data-testid, but just wanted to show this is also possible
+  // normalmente usaria um `data-testid`,
+  // mas apenas queria mostrar que isto também é possível
   expect(container.innerHTML).toMatch('No match')
 })
 
-// If your route component has parameters, you'll have to change the render function a little bit
-// example of a route component with parameter
+// Se o teu componente de rota tiver parâmetros,
+// terás de mudar a função de interpretação um pouco
+// exemplo de um componente de rota com parâmetro
 const Routes = () => (
   <Router>
     <SomeComponent path="/some-component/:id" />
   </Router>
 )
 
-// render function with Router wrapper from @reach/router
+// função de interpretação com o embrulhador Router de `@reach/router`
 function renderWithRouterWrapper(
   ui,
   {route = '/', history = createHistory(createMemorySource(route))} = {},
@@ -97,9 +101,10 @@ function renderWithRouterWrapper(
 }
 
 test('renders the component with params', () => {
-  // you'll have to declare the path prop in the component, exactly like the route
+  // terás de declarar a propriedade de caminho no componente,
+  // exatamente como a rota
   renderWithRouterWrapper(<SomeComponent path="/some-component/:id" />, {
-    // and pass the parameter value on the route config
+    // e passar o valor do parâmetro na configuração da rota.
     route: '/some-component/1',
   })
 })
