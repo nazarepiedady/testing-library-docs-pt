@@ -1,46 +1,25 @@
 ---
 id: intro
-title: Introduction
+title: Introdução
 ---
 
-## The problem
+## O problema
 
-You want to write maintainable tests for your Web UI. As a part of this goal,
-you want your tests to avoid including implementation details of your components
-and rather focus on making your tests give you the confidence for which they are
-intended. As part of this, you want your testbase to be maintainable in the long
-run so refactors of your components (changes to implementation but not
-functionality) don't break your tests and slow you and your team down.
+Tu queres escrever testes sustentáveis para a tua Interface de Utilizador de Web. Como parte deste objetivo, queres que os teus testes evitem incluir detalhes de implementação dos teus componentes e ao invés disto focar em fazer com que os teus testes darem-te a confiança para qual estão destinados. Como parte disto, queres que a tua base de teste seja sustentável a longo prazo assim as refatorações dos teus componentes ( que mudam a implementação mas não a funcionalidade) não quebram os teus testes e não abrandam-te e nem a tua equipa.
 
-## This solution
+## Esta solução
 
-The `DOM Testing Library` is a very light-weight solution for testing DOM nodes
-(whether simulated with [`JSDOM`](https://github.com/jsdom/jsdom) as provided by
-default with [Jest][jest] or in the browser). The main utilities it provides
-involve querying the DOM for nodes in a way that's similar to how the user finds
-elements on the page. In this way, the library helps ensure your tests give you
-confidence in your UI code. The `DOM Testing Library`'s primary guiding
-principle is:
+A `DOM Testing Library` é uma solução muito leve para testagem de nós de DOM (quer simulado com [`JSDOM`](https://github.com/jsdom/jsdom) conforme fornecido por padrão com a [Jest][jest] ou no navegador). Os utilitários principais que fornece envolvem consultar o DOM por nós de uma maneira que seja parecida a como o utilizador encontra os elementos na página. Neste sentido, a biblioteca ajuda a garantir que os teus testes dão-te confiança no código da tua Interface de Utilizador. O principal princípio orientador da `DOM Testing Library` é:
 
-> [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.mdx)
+> [Quanto mais os teus testes se parecerem com a maneira que o teu software é usado, mais confiança eles podem dar-te.](guiding-principles.mdx)
 
-As part of this goal, the utilities this library provides facilitate querying
-the DOM in the same way the user would. Finding form elements by their label
-text (just like a user would), finding links and buttons from their text (like a
-user would), and more. It also exposes a recommended way to find elements by a
-`data-testid` as an "escape hatch" for elements where the text content and label
-do not make sense or is not practical.
+Como parte deste objetivo, os utilitários que esta biblioteca fornece facilitam a consulta do DOM na mesma maneira que o utilizador faria. Encontrando elementos de formulário pelo texto dos seus rótulos (tal como um utilizador faria), encontrando as ligações e botões a partir do seu texto (como um utilizador faria), e muito mais. Ela também expõe uma maneira recomendada para encontrar elementos por um `data-testid` como uma "escotilha de fuga" para os elementos onde o conteúdo de texto e rótulo não fazem sentido ou não é prático.
 
-This library encourages your applications to be more accessible and allows you
-to get your tests closer to using your components the way a user will, which
-allows your tests to give you more confidence that your application will work
-when a real user uses it.
+Esta biblioteca encoraja as tuas aplicações a serem mais acessíveis e permitem-te conseguir que os teus testes usem os teus componentes de uma maneira mais próxima a maneira que um utilizador fará, o que permite os teus testes darem-te mais confiança de que a tua aplicação funcionará quando um utilizador de verdade usá-la.
 
-**What this library is not**:
+**O que esta biblioteca não é***:
 
-1.  A test runner or framework
-2.  Specific to a testing framework (though we recommend Jest as our preference,
-    the library works with any framework. See
-    [Using Without Jest](setup.mdx#using-without-jest))
+1. Um executor de teste ou abstração
+2. Especifica à uma abstração de testagem (embora recomendamos a Jest como nossa preferência, a biblioteca funciona com qualquer abstração. Consulte a guia [Usando Sem a Jest](setup.mdx#using-without-jest)).
 
 [jest]: https://jestjs.io
