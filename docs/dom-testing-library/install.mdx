@@ -1,20 +1,18 @@
 ---
 id: install
-title: Install
-sidebar_label: Install
+title: Instalar
+sidebar_label: Instalar
 ---
 
-This module is distributed via [npm][npm] which is bundled with [node][node] and
-should be installed as one of your project's `devDependencies`:
+Este módulo é distribuído através da [npm][npm] o qual é empacoto com a [Node][node] e deve ser instalado como uma das tuas `devDependencies` do projeto:
 
 ```bash npm2yarn
 npm install --save-dev @testing-library/dom
 ```
 
-## Wrappers
+## Embrulhadores
 
-If you are using a framework or library such as React, you will likely want to
-install the wrapper:
+Se estiveres a usar uma abstração ou biblioteca tal como a React, provavelmente quererás instalar o embrulhador:
 
 - [React Testing Library](react-testing-library/intro.mdx)
 - [Reason Testing Library](bs-react-testing-library/intro.mdx)
@@ -29,48 +27,32 @@ install the wrapper:
 - [Testcafe Testing Library](testcafe-testing-library/intro.mdx)
 - [Nightwatch Testing Library](nightwatch-testing-library/intro.mdx)
 
-## Ecosystem
+## Ecossistema
 
-`DOM Testing Library` works well with these companion libraries:
+A `DOM Testing Library` funciona com estas bibliotecas acompanhantes:
 
-- [user-event](user-event/intro.mdx) browser event simulation
-- [jest-dom](ecosystem-jest-dom.mdx) custom Jest matchers
-- [bs-jest-dom](ecosystem-bs-jest-dom.mdx) companion library for
-  `bs-react-testing-library`
-- [jest-native](ecosystem-jest-native.mdx) companion library for
-  `React Native Testing Library`
-- [react-select-event](ecosystem-react-select-event.mdx) companion library for
-  `React Testing Library`
-- [eslint-plugin-testing-library](ecosystem-eslint-plugin-testing-library.mdx)
-  ESLint plugin for Testing Library
-- [eslint-plugin-jest-dom](ecosystem-eslint-plugin-jest-dom.mdx) ESLint plugin
-  for Jest DOM
-- [riot-testing-library](ecosystem-riot-testing-library.mdx) adds APIs for
-  working with Riot.js components
+- [user-event](user-event/intro.mdx) - para simulação de evento de navegador.
+- [jest-dom](ecosystem-jest-dom.mdx) - correspondentes de Jest personalizado.
+- [bs-jest-dom](ecosystem-bs-jest-dom.mdx) - biblioteca acompanhante para `bs-react-testing-library`.
+- [jest-native](ecosystem-jest-native.mdx) - biblioteca acompanhante para `React Native Testing Library`.
+- [react-select-event](ecosystem-react-select-event.mdx) - biblioteca acompanhante para `React Testing Library`.
+- [eslint-plugin-testing-library](ecosystem-eslint-plugin-testing-library.mdx) - extensão de ESLint para Testing Library.
+- [eslint-plugin-jest-dom](ecosystem-eslint-plugin-jest-dom.mdx) - extensão de ESLint para Jest DOM.
+- [riot-testing-library](ecosystem-riot-testing-library.mdx) - para adicionar APIs para trabalhar com os componentes de Riot.js.
 
-## Main Exports
+## Exportações Principais
 
-You can
-[review the `DOM Testing Library` package.json here](https://unpkg.com/@testing-library/dom/package.json).
+Tu podes [revisar o `package.json` da `DOM Testing Library` nesta ligação](https://unpkg.com/@testing-library/dom/package.json).
 
-In particular, the `main`, `module`, and `umd:main` fields are useful. Each of
-these points to a file that's useful in certain situations. Typically, your
-testing framework will resolve to the correct one for your situation, but if it
-does not, then you can either configure your testing framework to resolve to the
-right file when you require/import `@testing-library/dom` or you can import the
-file you need more explicitly. For example:
+Em especial, os campos `main`, `module`, e `umd:main` são úteis. Cada um destes aponta para um ficheiro que é útil em certas situações. Normalmente, a tua abstração de testagem resolverá para aquela que for correta para a tua situação, mas se o fizer, então podes ou configurar a tua biblioteca de testagem para resolver o ficheiro correto quando precisares ou importares a `@testing-library/dom` ou podes importar o ficheiro que precisas mas explicitamente. Por exemplo:
 
 ```js
 import {within} from '@testing-library/dom/dist/@testing-library/dom.umd.js'
 ```
 
-You can
-[review the published `dist` files here](https://unpkg.com/@testing-library/dom/dist/).
+Tu podes [revisar os ficheiros de `dist` publicado nesta ligação](https://unpkg.com/@testing-library/dom/dist/).
 
-The `main` file is configured to compile down to support the version of node
-that is referenced in the `package.json` `engines.node` field. But the `module`
-and `umd:main` files are configured to compile down to support browsers as old
-as IE 10.
+O ficheiro `main` está configurado para compilar para suportar a versão de Node que está referenciada no campo `engines.node` do `package.json`. Mas os ficheiros `module` e `umd:main` são configurados para compilar para suportar os navegadores tão antigos quanto o Internet Explorer 10.
 
 <!--
 Links
