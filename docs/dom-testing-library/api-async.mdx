@@ -3,23 +3,15 @@ id: api-async
 title: Async Methods
 ---
 
-Several utilities are provided for dealing with asynchronous code. These can be
-useful to wait for an element to appear or disappear in response to an event,
-user action, timeout, or Promise. (See the
-[guide to testing disappearance](guide-disappearance.mdx).)
+Several utilities are provided for dealing with asynchronous code. These can be useful to wait for an element to appear or disappear in response to an event, user action, timeout, or Promise. (See the [guide to testing disappearance](guide-disappearance.mdx).)
 
-The async methods return Promises, so be sure to use `await` or `.then` when
-calling them.
+The async methods return Promises, so be sure to use `await` or `.then` when calling them.
 
 ## `findBy` Queries
 
-`findBy` methods are a combination of `getBy`
-[queries](queries/about.mdx#types-of-queries) and [`waitFor`](#waitfor). They
-accept the waitFor options as the last argument (e.g.
-`await screen.findByText('text', queryOptions, waitForOptions)`).
+`findBy` methods are a combination of `getBy` [queries](queries/about.mdx#types-of-queries) and [`waitFor`](#waitfor). They accept the waitFor options as the last argument (e.g. `await screen.findByText('text', queryOptions, waitForOptions)`).
 
-`findBy` queries work when you expect an element to appear but the change to the
-DOM might not happen immediately.
+`findBy` queries work when you expect an element to appear but the change to the DOM might not happen immediately.
 
 ```js
 const button = screen.getByRole('button', {name: 'Click Me'})
@@ -44,10 +36,7 @@ function waitFor<T>(
 ): Promise<T>
 ```
 
-When in need to wait for any period of time you can use `waitFor`, to wait for
-your expectations to pass. Returning _a falsy condition is not sufficient_ to
-trigger a retry, the callback must throw an error in order to retry the
-condition. Here's a simple example:
+When in need to wait for any period of time you can use `waitFor`, to wait for your expectations to pass. Returning _a falsy condition is not sufficient_ to trigger a retry, the callback must throw an error in order to retry the condition. Here's a simple example:
 
 ```javascript
 // ...
@@ -57,35 +46,21 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
 
-`waitFor` may run the callback a number of times until the timeout is reached.
-Note that the number of calls is constrained by the `timeout` and `interval`
-options.
+`waitFor` may run the callback a number of times until the timeout is reached. Note that the number of calls is constrained by the `timeout` and `interval` options.
 
-This can be useful if you have a unit test that mocks API calls and you need to
-wait for your mock promises to all resolve.
+This can be useful if you have a unit test that mocks API calls and you need to wait for your mock promises to all resolve.
 
-If you return a promise in the `waitFor` callback (either explicitly or
-implicitly with the `async` syntax), then the `waitFor` utility does not call
-your callback again until that promise rejects. This allows you to `waitFor`
-things that must be checked asynchronously.
+If you return a promise in the `waitFor` callback (either explicitly or implicitly with the `async` syntax), then the `waitFor` utility does not call your callback again until that promise rejects. This allows you to `waitFor` things that must be checked asynchronously.
 
-The default `container` is the global `document`. Make sure the elements you
-wait for are descendants of `container`.
+The default `container` is the global `document`. Make sure the elements you wait for are descendants of `container`.
 
-The default `interval` is `50ms`. However it runs your callback immediately
-before starting the intervals.
+The default `interval` is `50ms`. However it runs your callback immediately before starting the intervals.
 
 The default `timeout` is `1000ms`.
 
-The default `onTimeout` takes the error and appends the `container`'s printed
-state to the error message which should hopefully make it easier to track down
-what caused the timeout.
+The default `onTimeout` takes the error and appends the `container`'s printed state to the error message which should hopefully make it easier to track down what caused the timeout.
 
-The default `mutationObserverOptions` is
-`{subtree: true, childList: true, attributes: true, characterData: true}` which
-detects additions and removals of child elements (including text nodes) in the
-`container` and any of its descendants. It also detects attribute changes. When
-any of those changes occur, it re-runs the callback.
+The default `mutationObserverOptions` is `{subtree: true, childList: true, attributes: true, characterData: true}` which detects additions and removals of child elements (including text nodes) in the `container` and any of its descendants. It also detects attribute changes. When any of those changes occur, it re-runs the callback.
 
 ## `waitForElementToBeRemoved`
 
@@ -102,12 +77,9 @@ function waitForElementToBeRemoved<T>(
 ): Promise<void>
 ```
 
-To wait for the removal of element(s) from the DOM you can use
-`waitForElementToBeRemoved`. The `waitForElementToBeRemoved` function is a small
-wrapper around the `waitFor` utility.
+To wait for the removal of element(s) from the DOM you can use `waitForElementToBeRemoved`. The `waitForElementToBeRemoved` function is a small wrapper around the `waitFor` utility.
 
-The first argument must be an element, array of elements, or a callback which
-returns an element or array of elements.
+The first argument must be an element, array of elements, or a callback which returns an element or array of elements.
 
 Here is an example where the promise resolves because the element is removed:
 
@@ -125,8 +97,7 @@ el.parentElement.removeChild(el)
 // logs 'Element no longer in DOM'
 ```
 
-`waitForElementToBeRemoved` throws an error if the first argument is `null` or
-an empty array:
+`waitForElementToBeRemoved` throws an error if the first argument is `null` or an empty array:
 
 ```javascript
 waitForElementToBeRemoved(null).catch(err => console.log(err))
