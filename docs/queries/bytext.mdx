@@ -24,8 +24,7 @@ getByText(
   }): HTMLElement
 ```
 
-This will search for all elements that have a text node with `textContent`
-matching the given [`TextMatch`](queries/about.mdx#textmatch).
+This will search for all elements that have a text node with `textContent` matching the given [`TextMatch`](queries/about.mdx#textmatch).
 
 ```html
 <a href="/about">About ℹ️</a>
@@ -61,8 +60,7 @@ cy.findByText(/about/i).should('exist')
   </TabItem>
   </Tabs>
 
-It also works with `input`s whose `type` attribute is either `submit` or
-`button`:
+It also works with `input`s whose `type` attribute is either `submit` or `button`:
 
 ```js
 <input type="submit" value="Send data" />
@@ -76,15 +74,10 @@ It also works with `input`s whose `type` attribute is either `submit` or
 
 > **Note**
 >
-> See [`getByLabelText`](queries/bylabeltext.mdx#selector) for more details on
-> how and when to use the `selector` option
+> See [`getByLabelText`](queries/bylabeltext.mdx#selector) for more details on how and when to use the `selector` option
 
 ### `ignore`
 
-The `ignore` option accepts a query selector. If the
-[`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
-returns true for that selector, the node will be ignored. This defaults to
-`'script, style'` because generally you don't want to select these tags, but if
-your content is in an inline script file, then the script tag could be returned.
+The `ignore` option accepts a query selector. If the [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches) returns true for that selector, the node will be ignored. This defaults to `'script, style'` because generally you don't want to select these tags, but if your content is in an inline script file, then the script tag could be returned.
 
 If you'd rather disable this behavior, set `ignore` to `false`.
