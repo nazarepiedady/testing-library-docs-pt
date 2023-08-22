@@ -22,8 +22,7 @@ getByPlaceholderText(
   }): HTMLElement
 ```
 
-This will search for all elements with a placeholder attribute and find one that
-matches the given [`TextMatch`](queries/about.mdx#textmatch).
+This will search for all elements with a placeholder attribute and find one that matches the given [`TextMatch`](queries/about.mdx#textmatch).
 
 ```html
 <input placeholder="Username" />
@@ -61,8 +60,7 @@ cy.findByPlaceholderText('Username').should('exist')
 
 > **Note**
 >
-> A placeholder is not a good substitute for a label so you should generally use
-> `getByLabelText` instead.
+> A placeholder is not a good substitute for a label so you should generally use `getByLabelText` instead.
 
 ## Options
 
