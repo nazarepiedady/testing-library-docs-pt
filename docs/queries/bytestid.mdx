@@ -22,8 +22,7 @@ getByTestId(
   }): HTMLElement
 ```
 
-A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
-also accepts a [`TextMatch`](queries/about.mdx#textmatch)).
+A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it also accepts a [`TextMatch`](queries/about.mdx#textmatch)).
 
 ```html
 <div data-testid="custom-element" />
@@ -59,13 +58,7 @@ cy.findByTestId('custom-element').should('exist')
   </TabItem>
   </Tabs>
 
-> In the spirit of [the guiding principles](guiding-principles.mdx), it is
-> recommended to use this only after the other queries don't work for your use
-> case. Using data-testid attributes do not resemble how your software is used
-> and should be avoided if possible. That said, they are _way_ better than
-> querying based on DOM structure or styling css class names. Learn more about
-> `data-testid`s from the blog post
-> ["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
+> In the spirit of [the guiding principles](guiding-principles.mdx), it is recommended to use this only after the other queries don't work for your use case. Using data-testid attributes do not resemble how your software is used and should be avoided if possible. That said, they are _way_ better than querying based on DOM structure or styling css class names. Learn more about `data-testid`s from the blog post ["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
 
 ## Options
 
@@ -73,11 +66,4 @@ cy.findByTestId('custom-element').should('exist')
 
 ## Overriding `data-testid`
 
-The `...ByTestId` functions in `DOM Testing Library` use the attribute
-`data-testid` by default, following the precedent set by
-[React Native Web](https://github.com/testing-library/react-testing-library/issues/1)
-which uses a `testID` prop to emit a `data-testid` attribute on the element, and
-we recommend you adopt that attribute where possible. But if you already have an
-existing codebase that uses a different attribute for this purpose, you can
-override this value via
-`configure({testIdAttribute: 'data-my-test-attribute'})`.
+The `...ByTestId` functions in `DOM Testing Library` use the attribute `data-testid` by default, following the precedent set by [React Native Web](https://github.com/testing-library/react-testing-library/issues/1) which uses a `testID` prop to emit a `data-testid` attribute on the element, and we recommend you adopt that attribute where possible. But if you already have an existing codebase that uses a different attribute for this purpose, you can override this value via `configure({testIdAttribute: 'data-my-test-attribute'})`.
