@@ -38,7 +38,7 @@ export default function Help(props) {
       title: 'Discord',
     },
     {
-      content: `Mantenha-te atualizado seguindo o [blogue](${props.config.baseUrl}blog)`,
+      content: `Siga o [blogue](${props.config.baseUrl}blog)`,
       title: 'Blogue',
     },
     {
