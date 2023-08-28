@@ -5,10 +5,7 @@
 [![Code of Conduct][coc-badge]][coc]
 <!-- prettier-ignore-end -->
 
-Página de documentação para
-[DOM Testing Library](https://github.com/testing-library/dom-testing-library),
-[React Testing Library](https://github.com/testing-library/react-testing-library),
-e [projetos relacionados](https://github.com/testing-library)
+Página de documentação para [DOM Testing Library](https://github.com/testing-library/dom-testing-library), [React Testing Library](https://github.com/testing-library/react-testing-library), e [projetos relacionados](https://github.com/testing-library)
 
 **https://testing-library.com**
 
