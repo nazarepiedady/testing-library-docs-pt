@@ -4,31 +4,23 @@ title: API
 sidebar_label: API
 ---
 
-`Angular Testing Library` re-exports everything from `DOM Testing Library` as
-well as the `render` method.
+`Angular Testing Library` re-exports everything from `DOM Testing Library` as well as the `render` method.
 
 The following re-exports are patched to make them easier to use with Angular:
 
-- The events on `fireEvent` automatically invoke a change detection cycle after
-  the event has been fired
-- The `findBy` queries automatically invoke a change detection cycle before the
-  query is invoked function
-- The `waitFor` functions automatically invoke a change detection cycle before
-  invoking the callback function
+- The events on `fireEvent` automatically invoke a change detection cycle after the event has been fired
+- The `findBy` queries automatically invoke a change detection cycle before the query is invoked function
+- The `waitFor` functions automatically invoke a change detection cycle before invoking the callback function
 
 ## `render`
 
-With Angular Testing Library, the component can be rendered in two ways, via the
-component's type or with a template.
+With Angular Testing Library, the component can be rendered in two ways, via the component's type or with a template.
 
 > By default, `render` also imports the `NoopAnimationsModule`.
 
 ## `Type`
 
-To render a component, you need to pass component's type to the `render` method.
-For components that don't use other parts of your application (for example
-design modules or services), rendering a component can be as simple as the
-following example.
+To render a component, you need to pass component's type to the `render` method. For components that don't use other parts of your application (for example design modules or services), rendering a component can be as simple as the following example.
 
 ```typescript
 await render(AppComponent)
@@ -36,10 +28,7 @@ await render(AppComponent)
 
 ## `template`
 
-Instead of passing the component's type as first argument, you can also provide
-a template. This practice is required to render directives but can also be
-applied to components, it might even be more useful. The directive's (or
-component's) type must then be added to the `declarations`.
+Instead of passing the component's type as first argument, you can also provide a template. This practice is required to render directives but can also be applied to components, it might even be more useful. The directive's (or component's) type must then be added to the `declarations`.
 
 **example with directive**:
 
@@ -79,9 +68,7 @@ export async function render<WrapperType = WrapperComponent>(
 
 ### `componentInputs`
 
-An object to set `@Input` properties of the component. Uses `setInput` to set
-the input property. Throws if the component property is not annotated with the
-`@Input` attribute.
+An object to set `@Input` properties of the component. Uses `setInput` to set the input property. Throws if the component property is not annotated with the `@Input` attribute.
 
 **default** : `{}`
 
@@ -113,8 +100,7 @@ await render(AppComponent, {
 
 ### `componentProperties`
 
-An object to set `@Input` and `@Output` properties of the component. Doesn't
-have a fine-grained control as `componentInputs` and `componentOutputs`.
+An object to set `@Input` and `@Output` properties of the component. Doesn't have a fine-grained control as `componentInputs` and `componentOutputs`.
 
 **default** : `{}`
 
@@ -135,11 +121,9 @@ await render(AppComponent, {
 
 ### `declarations`
 
-A collection of components, directives and pipes needed to render the component.
-For example, nested components of the component.
+A collection of components, directives and pipes needed to render the component. For example, nested components of the component.
 
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#declarations).
+For more info see the [Angular docs](https://angular.io/api/core/NgModule#declarations).
 
 **default** : `[]`
 
@@ -153,14 +137,11 @@ await render(AppComponent, {
 
 ### `componentProviders`
 
-A collection of providers needed to render the component via Dependency
-Injection.
+A collection of providers needed to render the component via Dependency Injection.
 
-These will be provided at the component level. To inject dependencies at the
-module level, use [`providers`](#providers).
+These will be provided at the component level. To inject dependencies at the module level, use [`providers`](#providers).
 
-For more info see the
-[Angular docs](https://angular.io/api/core/Directive#providers).
+For more info see the [Angular docs](https://angular.io/api/core/Directive#providers).
 
 **default** : `[]`
 
@@ -219,8 +200,7 @@ await render(AppComponent, {detectChangesOnRender: false})
 
 ### `autoDetectChanges`
 
-Automatically detect changes as a "real" running component would do. For
-example, runs a change detection cycle when an event has occured.
+Automatically detect changes as a "real" running component would do. For example, runs a change detection cycle when an event has occured.
 
 **default** : `true`
 
@@ -234,9 +214,7 @@ await render(AppComponent, {
 
 ### `excludeComponentDeclaration`
 
-Exclude the component to be automatically be added as a declaration. This is
-needed when the component is declared in an imported module, for example with
-SCAMs.
+Exclude the component to be automatically be added as a declaration. This is needed when the component is declared in an imported module, for example with SCAMs.
 
 **default** : `false`
 
@@ -251,12 +229,9 @@ await render(AppComponent, {
 
 ### `imports`
 
-A collection of imports needed to render the component, for example, shared
-modules. Adds `NoopAnimationsModule` by default if `BrowserAnimationsModule`
-isn't added to the collection
+A collection of imports needed to render the component, for example, shared modules. Adds `NoopAnimationsModule` by default if `BrowserAnimationsModule` isn't added to the collection
 
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#imports).
+For more info see the [Angular docs](https://angular.io/api/core/NgModule#imports).
 
 **default** : `[NoopAnimationsModule]`
 
@@ -270,14 +245,11 @@ await render(AppComponent, {
 
 ### `providers`
 
-A collection of providers needed to render the component via Dependency
-Injection.
+A collection of providers needed to render the component via Dependency Injection.
 
-These will be provided at the module level. To inject dependencies at the
-component level, use [`componentProviders`](#componentProviders).
+These will be provided at the module level. To inject dependencies at the component level, use [`componentProviders`](#componentProviders).
 
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#providers).
+For more info see the [Angular docs](https://angular.io/api/core/NgModule#providers).
 
 **default** : `[]`
 
@@ -297,8 +269,7 @@ await render(AppComponent, {
 
 ### `queries`
 
-Queries to bind. Overrides the default set from DOM Testing Library unless
-merged.
+Queries to bind. Overrides the default set from DOM Testing Library unless merged.
 
 **default** : `undefined`
 
@@ -312,9 +283,7 @@ await render(AppComponent, {
 
 ### `routes`
 
-The route configuration to set up the router service via
-`RouterTestingModule.withRoutes`. For more info see the
-[Angular Routes docs](https://angular.io/api/router/Routes).
+The route configuration to set up the router service via `RouterTestingModule.withRoutes`. For more info see the [Angular Routes docs](https://angular.io/api/router/Routes).
 
 **default** : `[]`
 
@@ -339,11 +308,9 @@ await render(AppComponent, {
 
 ### `schemas`
 
-A collection of schemas needed to render the component. Allowed values are
-`NO_ERRORS_SCHEMA` and `CUSTOM_ELEMENTS_SCHEMA`.
+A collection of schemas needed to render the component. Allowed values are `NO_ERRORS_SCHEMA` and `CUSTOM_ELEMENTS_SCHEMA`.
 
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#schemas).
+For more info see the [Angular docs](https://angular.io/api/core/NgModule#schemas).
 
 **default** : `[]`
 
@@ -373,14 +340,11 @@ await render(AppComponent, {
 
 ### `container`
 
-The containing DOM node of your rendered Angular Component. This is a regular
-DOM node, so you can call `container.querySelector` etc. to inspect the
-children.
+The containing DOM node of your rendered Angular Component. This is a regular DOM node, so you can call `container.querySelector` etc. to inspect the children.
 
 ### `debug`
 
-Prints out the component's DOM with syntax highlighting. Accepts an optional
-parameter, to print out a specific DOM node.
+Prints out the component's DOM with syntax highlighting. Accepts an optional parameter, to print out a specific DOM node.
 
 ```typescript
 const {debug} = await render(AppComponent)
@@ -390,8 +354,7 @@ debug()
 
 ### `change`
 
-Change the input of the component. This calls `detectChanges` after the props
-are updated.
+Change the input of the component. This calls `detectChanges` after the props are updated.
 
 ```typescript
 const {change} = await render(Counter, {
@@ -411,8 +374,7 @@ expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
 ### `rerender`
 
-Create and render a new instance of the component. Input properties that are not
-defined are cleared. To keep them use [change](#change).
+Create and render a new instance of the component. Input properties that are not defined are cleared. To keep them use [change](#change).
 
 ```typescript
 const {rerender} = await render(Counter, {
@@ -434,8 +396,7 @@ expect(screen.getByTestId('name-value').textContent).toBeUndefined()
 
 Trigger a change detection cycle for the component.
 
-For more info see the
-[Angular docs](https://angular.io/api/core/testing/ComponentFixture#detectChanges).
+For more info see the [Angular docs](https://angular.io/api/core/testing/ComponentFixture#detectChanges).
 
 ### `debugElement`
 
@@ -447,8 +408,7 @@ For more info see the [Angular docs](https://angular.io/api/core/DebugElement).
 
 The Angular `ComponentFixture` of the component.
 
-For more info see the
-[Angular docs](https://angular.io/api/core/testing/ComponentFixture).
+For more info see the [Angular docs](https://angular.io/api/core/testing/ComponentFixture).
 
 ```typescript
 const {fixture} = await render(AppComponent)
@@ -457,15 +417,11 @@ const {fixture} = await render(AppComponent)
 const componentInstance = fixture.componentInstance
 ```
 
-> 🚨 If you find yourself using `fixture` to access the component's internal
-> values you should reconsider! This probable means, you're testing
-> implementation details.
+> 🚨 If you find yourself using `fixture` to access the component's internal values you should reconsider! This probable means, you're testing implementation details.
 
 ### `navigate`
 
-Accepts a DOM element or a path as parameter. If an element is passed,
-`navigate` will navigate to the `href` value of the element. If a path is
-passed, `navigate` will navigate to the path.
+Accepts a DOM element or a path as parameter. If an element is passed, `navigate` will navigate to the `href` value of the element. If a path is passed, `navigate` will navigate to the path.
 
 ```typescript
 const { navigate } = await render(AppComponent, {
@@ -478,9 +434,7 @@ await navigate('details/3')
 
 ### `...queries`
 
-The most important feature of `render` is that the queries from
-[DOM Testing Library](/docs/dom-testing-library/intro) are automatically
-returned with their first argument bound to the component under test.
+The most important feature of `render` is that the queries from [DOM Testing Library](/docs/dom-testing-library/intro) are automatically returned with their first argument bound to the component under test.
 
 See [Queries](queries/about.mdx) for a complete list.
 
