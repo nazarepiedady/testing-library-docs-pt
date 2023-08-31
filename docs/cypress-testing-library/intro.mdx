@@ -3,8 +3,7 @@ id: intro
 title: Cypress Testing Library
 ---
 
-[`Cypress Testing Library`][gh] allows the use of dom-testing queries within
-[Cypress](https://cypress.io) end-to-end browser tests.
+[`Cypress Testing Library`][gh] allows the use of dom-testing queries within [Cypress](https://cypress.io) end-to-end browser tests.
 
 ```bash npm2yarn
 npm install --save-dev cypress @testing-library/cypress
@@ -22,15 +21,9 @@ Add this line to your project's `cypress/support/commands.js`:
 import '@testing-library/cypress/add-commands'
 ```
 
-You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy`
-and `queryAllBy` commands off the global `cy` object.
-[See the `About queries` docs for reference](/docs/queries/about).
+You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy` and `queryAllBy` commands off the global `cy` object. [See the `About queries` docs for reference](/docs/queries/about).
 
-> Note: the `get*` queries are not supported because for reasonable Cypress
-> tests you need retryability and `find*` queries already support that. `query*`
-> queries are no longer necessary since v5 and will be removed in v6. `find*`
-> fully support built-in Cypress assertions (removes the only use-case for
-> `query*`).
+> Note: the `get*` queries are not supported because for reasonable Cypress tests you need retryability and `find*` queries already support that. `query*` queries are no longer necessary since v5 and will be removed in v6. `find*` fully support built-in Cypress assertions (removes the only use-case for `query*`).
 
 ## With TypeScript
 
@@ -44,13 +37,11 @@ Typings should be added as follows in `tsconfig.json`:
 }
 ```
 
-You can find
-[all Library definitions here](https://github.com/testing-library/cypress-testing-library/blob/master/types/index.d.ts).
+You can find [all Library definitions here](https://github.com/testing-library/cypress-testing-library/blob/master/types/index.d.ts).
 
 ## Examples
 
-To show some simple examples (from
-[cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/97939da7d4707a71049884c0324c0eda56e26fc2/cypress/integration/find.spec.js)):
+To show some simple examples (from [cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/97939da7d4707a71049884c0324c0eda56e26fc2/cypress/integration/find.spec.js)):
 
 ```javascript
 cy.findByRole('button', {name: /Jackie Chan/i}).click()
@@ -67,10 +58,6 @@ cy.findByRole('dialog').within(() => {
 })
 ```
 
-`Cypress Testing Library` supports both jQuery elements and DOM nodes. This is
-necessary because Cypress uses jQuery elements, while `DOM Testing Library`
-expects DOM nodes. When you pass a jQuery element as `container`, it will get
-the first DOM node from the collection and use that as the `container` parameter
-for the `DOM Testing Library` functions.
+`Cypress Testing Library` supports both jQuery elements and DOM nodes. This is necessary because Cypress uses jQuery elements, while `DOM Testing Library` expects DOM nodes. When you pass a jQuery element as `container`, it will get the first DOM node from the collection and use that as the `container` parameter for the `DOM Testing Library` functions.
 
 [gh]: https://github.com/testing-library/cypress-testing-library
