@@ -3,8 +3,7 @@ id: api
 title: API
 ---
 
-`Marko Testing Library` re-exports everything from `DOM Testing Library` as well
-as these methods:
+`Marko Testing Library` re-exports everything from `DOM Testing Library` as well as these methods:
 
 - [`render`](#render)
   - [`render` Options](#render-options)
@@ -54,18 +53,13 @@ test('renders a message', async () => {
 
 ### `render` Options
 
-You won't often need to specify options, but if you ever do, here are the
-available options which you can provide as the third argument to `render`.
+You won't often need to specify options, but if you ever do, here are the available options which you can provide as the third argument to `render`.
 
 #### `container`
 
-By default for client-side tests, `Marko Testing Library` will create a `div`
-and append that `div` to the `document.body` and this is where your component
-will be rendered. If you provide your own HTMLElement `container` via this
-option, it will not be appended to the `document.body` automatically.
+By default for client-side tests, `Marko Testing Library` will create a `div` and append that `div` to the `document.body` and this is where your component will be rendered. If you provide your own HTMLElement `container` via this option, it will not be appended to the `document.body` automatically.
 
-For example: If you are unit testing a `tablebody` element, it cannot be a child
-of a `div`. In this case, you can specify a `table` as the render `container`.
+For example: If you are unit testing a `tablebody` element, it cannot be a child of a `div`. In this case, you can specify a `table` as the render `container`.
 
 ```javascript
 const table = document.createElement('table')
@@ -77,14 +71,11 @@ const {container} = await render(MyTableBody, null, {
 
 ## `render` Result
 
-The `render` method returns a promise which resolves with an object that has a
-few properties:
+The `render` method returns a promise which resolves with an object that has a few properties:
 
 ### `...queries`
 
-The most important feature of `render` is that the queries from
-[the Core API](queries/about.mdx) are automatically returned with their first
-argument bound to the results of rendering your component.
+The most important feature of `render` is that the queries from [the Core API](queries/about.mdx) are automatically returned with their first argument bound to the results of rendering your component.
 
 See [Queries](queries/about.mdx#types-of-queries) for a complete list.
 
@@ -94,9 +85,7 @@ See [Queries](queries/about.mdx#types-of-queries) for a complete list.
 const {getByLabelText, queryAllByTestId} = await render(MyTemplate)
 ```
 
-Alternatively, you can use the
-[top-level `screen` method](queries/about.mdx#screen) to query into all
-currently rendered components in the `document.body`, eg:
+Alternatively, you can use the [top-level `screen` method](queries/about.mdx#screen) to query into all currently rendered components in the `document.body`, eg:
 
 ```javascript
 import { render, screen } from "@marko/testing-library"
@@ -107,8 +96,7 @@ const el = screen.getByText(...)
 
 ### `debug`
 
-This method is a shortcut for logging the `prettyDOM` for all children inside of
-the `container`.
+This method is a shortcut for logging the `prettyDOM` for all children inside of the `container`.
 
 ```javascript
 import {render} from '@marko/testing-library'
@@ -121,16 +109,11 @@ debug()
 // you can also pass an element: debug(getByTestId('messages'))
 ```
 
-This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`DOM Testing Library`](dom-testing-library/api-debugging.mdx#prettydom).
+This is a simple wrapper around `prettyDOM` which is also exposed and comes from [`DOM Testing Library`](dom-testing-library/api-debugging.mdx#prettydom).
 
 ### `rerender`
 
-A Marko components `input` can change at any time from a parent component.
-Although often this input is passed through your component declaratively,
-sometimes it is necessary to ensure that your components react appropriately to
-new data. You can simulate your component receiving new `input` by passing new
-data to the `rerender` helper.
+A Marko components `input` can change at any time from a parent component. Although often this input is passed through your component declaratively, sometimes it is necessary to ensure that your components react appropriately to new data. You can simulate your component receiving new `input` by passing new data to the `rerender` helper.
 
 ```javascript
 import {render} from '@marko/testing-library'
@@ -147,13 +130,9 @@ debug()
 
 ### `emitted`
 
-Marko components also communicate with their parents through events. It is
-recommended to also test that your components emit the right events at the right
-time.
+Marko components also communicate with their parents through events. It is recommended to also test that your components emit the right events at the right time.
 
-The `emitted` helper does just that. Calling the helper will return all emitted
-events since the last call to the helper. You can also pass in an event type to
-filter the results.
+The `emitted` helper does just that. Calling the helper will return all emitted events since the last call to the helper. You can also pass in an event type to filter the results.
 
 ```javascript
 import {render, fireEvent} from '@marko/testing-library'
@@ -217,11 +196,9 @@ expect(emitted()).toMatchInlineSnapshot(`
 
 ### `cleanup`
 
-Like the [top-level cleanup method](#cleanup-1), this allows you to remove and
-destroy the currently rendered component before the test has been completed.
+Like the [top-level cleanup method](#cleanup-1), this allows you to remove and destroy the currently rendered component before the test has been completed.
 
-This can be useful to validate that a component properly cleans up any DOM
-mutations once it has been destroyed.
+This can be useful to validate that a component properly cleans up any DOM mutations once it has been destroyed.
 
 ```javascript
 import {render, screen, getRoles} from '@marko/testing-library'
@@ -243,25 +220,15 @@ expect(main).not.toHaveAttribute('aria-hidden') // assert attribute removed
 
 ### `container`
 
-The containing DOM node of your rendered Marko Component. For server-side tests
-this is a [JSDOM.fragment](https://github.com/jsdom/jsdom#fragment), and for
-client-side tests this will be whatever is passed as the `container` render
-option.
+The containing DOM node of your rendered Marko Component. For server-side tests this is a [JSDOM.fragment](https://github.com/jsdom/jsdom#fragment), and for client-side tests this will be whatever is passed as the `container` render option.
 
-> Tip: To get the root element of your rendered element, use
-> `container.firstChild`.
+> Tip: To get the root element of your rendered element, use `container.firstChild`.
 
-> 🚨 If you find yourself using `container` to query for rendered elements then
-> you should reconsider! The other queries are designed to be more resilient to
-> changes that will be made to the component you're testing. Avoid using
-> `container` to query for elements!
+> 🚨 If you find yourself using `container` to query for rendered elements then you should reconsider! The other queries are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
 
 ## `fireEvent`
 
-Because Marko batches DOM updates to avoid unnecessary re-renders, the
-[fireEvent](dom-testing-library/api-events.mdx) helpers are re-exported as
-`async` functions. Awaiting this ensures that the DOM has properly updated in
-response to the event triggered in the test.
+Because Marko batches DOM updates to avoid unnecessary re-renders, the [fireEvent](dom-testing-library/api-events.mdx) helpers are re-exported as `async` functions. Awaiting this ensures that the DOM has properly updated in response to the event triggered in the test.
 
 ```js
 await fireEvent.click(getByText('Click me'))
@@ -269,11 +236,7 @@ await fireEvent.click(getByText('Click me'))
 
 ## `cleanup`
 
-With client-side tests your components are rendered into a placeholder
-HTMLElement. To ensure that your components are properly removed, and destroyed,
-after each test the `cleanup` method is called for you automatically by hooking
-into `afterEach` in supported test frameworks. You can also manually call
-`cleanup` at any time which will remove all attached components.
+With client-side tests your components are rendered into a placeholder HTMLElement. To ensure that your components are properly removed, and destroyed, after each test the `cleanup` method is called for you automatically by hooking into `afterEach` in supported test frameworks. You can also manually call `cleanup` at any time which will remove all attached components.
 
 ```javascript
 import {render, cleanup, screen} from '@marko/testing-library'
@@ -294,9 +257,6 @@ You can turn off the automatic test cleanup by importing the following module:
 import '@marko/testing-library/dont-cleanup-after-each'
 ```
 
-With mocha you can use `mocha -r @marko/testing-library/dont-cleanup-after-each`
-as a shorthand.
+With mocha you can use `mocha -r @marko/testing-library/dont-cleanup-after-each` as a shorthand.
 
-If you are using Jest, you can include
-`setupFilesAfterEnv: ["@marko/testing-library/dont-cleanup-after-each"]` in your
-Jest config to avoid doing this in each file.
+If you are using Jest, you can include `setupFilesAfterEnv: ["@marko/testing-library/dont-cleanup-after-each"]` in your Jest config to avoid doing this in each file.
