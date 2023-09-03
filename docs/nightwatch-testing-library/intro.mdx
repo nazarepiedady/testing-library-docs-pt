@@ -3,13 +3,11 @@ id: intro
 title: Nightwatch Testing Library
 ---
 
-[`nightwatch-testing-library`][gh] allows the use of dom-testing-library queries
-in [Nightwatch](https://nightwatchjs.org) for end-to-end web testing.
+[`nightwatch-testing-library`][gh] allows the use of dom-testing-library queries in [Nightwatch](https://nightwatchjs.org) for end-to-end web testing.
 
 ## Install
 
-> Be sure to follow the
-> [Nightwatch install & config instructions first](https://nightwatchjs.org/gettingstarted/installation/)
+> Be sure to follow the [Nightwatch install & config instructions first](https://nightwatchjs.org/gettingstarted/installation/)
 
 then just
 
@@ -21,17 +19,9 @@ npm install -D @testing-library/nightwatch
 
 ## READ THIS FIRST
 
-At it's core, `nightwatch-testing-library` translates between
-dom-testing-library queries and css selectors. This is due to the fact that
-Nightwatch adheres to the WebDriver standards for
-[locator strategies](https://www.w3.org/TR/webdriver/#locator-strategies). For
-now, this means that the logging will have some very detailed css paths. PRs
-welcome for a
-[custom reporter](https://nightwatchjs.org/guide/extending-nightwatch/#custom-reporter)
-to solve this problem 🤗.
+At it's core, `nightwatch-testing-library` translates between dom-testing-library queries and css selectors. This is due to the fact that Nightwatch adheres to the WebDriver standards for [locator strategies](https://www.w3.org/TR/webdriver/#locator-strategies). For now, this means that the logging will have some very detailed css paths. PRs welcome for a [custom reporter](https://nightwatchjs.org/guide/extending-nightwatch/#custom-reporter) to solve this problem 🤗.
 
-**So remember, the results from NWTL queries are WebDriver locators, not DOM
-nodes.**
+**So remember, the results from NWTL queries are WebDriver locators, not DOM nodes.**
 
 > Note, in NWTL, all queries must be `await`ed.
 
@@ -70,9 +60,7 @@ module.exports = {
 
 ### `AllBy` queries
 
-The results of `AllBy` queries have an additional function added to them: `nth`
-which can be used in nightwatch functions as well as in the `within` function of
-NWTL.
+The results of `AllBy` queries have an additional function added to them: `nth` which can be used in nightwatch functions as well as in the `within` function of NWTL.
 
 ```javascript
 
@@ -99,8 +87,7 @@ NWTL.
 
 ## Configure
 
-You can customize the testIdAttribute using the `configure` function just like
-[dom-testing-library][config]:
+You can customize the testIdAttribute using the `configure` function just like [dom-testing-library][config]:
 
 ```javascript
 const {configure} = require('@testing-library/nightwatch')
@@ -110,9 +97,7 @@ configure({testIdAttribute: 'data-automation-id'})
 
 ## Containers
 
-By default the queries come pre-bound to `document.body`, so no need to provide
-a container. However, if you want to restrict your query using a container, you
-can use `within`.
+By default the queries come pre-bound to `document.body`, so no need to provide a container. However, if you want to restrict your query using a container, you can use `within`.
 
 ### Examples using `within`
 
