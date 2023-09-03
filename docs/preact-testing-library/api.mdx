@@ -14,9 +14,7 @@ sidebar_label: API
 
 ## `@testing-library/dom`
 
-This library re-exports everything from the DOM Testing Library
-(`@testing-library/dom`). See the [documentation](queries/about.mdx) to see what
-goodies you can use.
+This library re-exports everything from the DOM Testing Library (`@testing-library/dom`). See the [documentation](queries/about.mdx) to see what goodies you can use.
 
 ## `render`
 
@@ -52,9 +50,7 @@ const {results} = render(<YourComponent />, {options})
 
 Unmounts the component from the container and destroys the container.
 
-📝 When you import anything from the library, this automatically runs after each
-test. If you'd like to disable this then set `process.env.PTL_SKIP_AUTO_CLEANUP`
-to true when running your tests.
+📝 When you import anything from the library, this automatically runs after each test. If you'd like to disable this then set `process.env.PTL_SKIP_AUTO_CLEANUP` to true when running your tests.
 
 ```jsx
 import {render, cleanup} from '@testing-library/preact'
@@ -70,25 +66,15 @@ cleanup() // Or like this for more control.
 
 ## `act`
 
-Just a convenience export that points to preact/test-utils/act. All renders and
-events being fired are wrapped in `act`, so you don't really need this. It's
-responsible for flushing all effects and rerenders after invoking it.
+Just a convenience export that points to preact/test-utils/act. All renders and events being fired are wrapped in `act`, so you don't really need this. It's responsible for flushing all effects and rerenders after invoking it.
 
-📝 If you'd love to learn more, checkout
-[this explanation](https://github.com/threepointone/react-act-examples/blob/master/sync.md).
-Even though it's for React, it gives you an idea of why it's needed.
+📝 If you'd love to learn more, checkout [this explanation](https://github.com/threepointone/react-act-examples/blob/master/sync.md). Even though it's for React, it gives you an idea of why it's needed.
 
 ## `fireEvent`
 
-Passes it to the @testing-library/dom
-[fireEvent](dom-testing-library/api-events.mdx). It's also wrapped in `act` so
-you don't need to worry about doing it.
+Passes it to the @testing-library/dom [fireEvent](dom-testing-library/api-events.mdx). It's also wrapped in `act` so you don't need to worry about doing it.
 
-📝 Keep in mind mainly when using `h / Preact.createElement` that React uses a
-Synthetic event system, and Preact uses the browser's native `addEventListener`
-for event handling. This means events like `onChange` and `onDoubleClick` in
-React, are `onInput` and `onDblClick` in Preact. The double click example will
-give you an idea of how to test using those functions.
+📝 Keep in mind mainly when using `h / Preact.createElement` that React uses a Synthetic event system, and Preact uses the browser's native `addEventListener` for event handling. This means events like `onChange` and `onDoubleClick` in React, are `onInput` and `onDblClick` in Preact. The double click example will give you an idea of how to test using those functions.
 
 ### Example 1
 
