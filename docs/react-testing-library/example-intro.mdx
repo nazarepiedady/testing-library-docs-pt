@@ -6,10 +6,7 @@ sidebar_label: Example
 
 ## Quickstart
 
-This is a minimal setup to get you started. 
-If you want to see a description of what each line does, 
-scroll down to the [annotated version](#quickstart-annotated).
-Scroll down to [Full Example](#full-example) to see a more advanced test setup.
+This is a minimal setup to get you started. If you want to see a description of what each line does,scroll down to the [annotated version](#quickstart-annotated). Scroll down to [Full Example](#full-example) to see a more advanced test setup.
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -117,9 +114,7 @@ test('handles server error', async () => {
 })
 ```
 
-> We recommend using [Mock Service Worker](https://github.com/mswjs/msw) library
-> to declaratively mock API communication in your tests instead of stubbing
-> `window.fetch`, or relying on third-party adapters.
+> We recommend using [Mock Service Worker](https://github.com/mswjs/msw) library to declaratively mock API communication in your tests instead of stubbing `window.fetch`, or relying on third-party adapters.
 
 ---
 
@@ -154,8 +149,7 @@ test('loads and displays greeting', async () => {
 
 ### Mock
 
-Use the `setupServer` function from `msw` to mock an API request that our tested
-component makes.
+Use the `setupServer` function from `msw` to mock an API request that our tested component makes.
 
 ```js
 // declare which API requests to mock
@@ -200,8 +194,7 @@ render(<Fetch url="/greeting" />)
 
 ### Act
 
-The [`fireEvent`](dom-testing-library/api-events.mdx) method allows you to fire
-events to simulate user actions.
+The [`fireEvent`](dom-testing-library/api-events.mdx) method allows you to fire events to simulate user actions.
 
 ```jsx
 fireEvent.click(screen.getByText('Load Greeting'))
