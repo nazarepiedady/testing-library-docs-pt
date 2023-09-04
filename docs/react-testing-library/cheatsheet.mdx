@@ -10,9 +10,7 @@ A short guide to all the exported functions in `React Testing Library`
 - **render** `const {/* */} = render(Component)` returns:
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
-  - all the queries from `DOM Testing Library`, bound to the document so there
-    is no need to pass a node as the first argument (usually, you can use the
-    `screen` import instead)
+  - all the queries from `DOM Testing Library`, bound to the document so there is no need to pass a node as the first argument (usually, you can use the `screen` import instead)
 
 ```jsx
 import {render, fireEvent, screen} from '@testing-library/react'
@@ -33,9 +31,7 @@ test('loads items eventually', async () => {
 
 > **Difference from DOM Testing Library**
 >
-> The queries returned from `render` in `React Testing Library` are the same as
-> `DOM Testing Library` except they have the first argument bound to the
-> document, so instead of `getByText(node, 'text')` you do `getByText('text')`
+> The queries returned from `render` in `React Testing Library` are the same as `DOM Testing Library` except they have the first argument bound to the document, so instead of `getByText(node, 'text')` you do `getByText('text')`
 
 See [Which query should I use?](queries/about.mdx#priority)
 
@@ -107,13 +103,10 @@ See [Which query should I use?](queries/about.mdx#priority)
 
 ## Async
 
-The [dom-testing-library Async API](dom-testing-library/api-async.mdx) is
-re-exported from React Testing Library.
+The [dom-testing-library Async API](dom-testing-library/api-async.mdx) is re-exported from React Testing Library.
 
-- **waitFor** (Promise) retry the function within until it stops throwing or
-  times out
-- **waitForElementToBeRemoved** (Promise) retry the function until it no longer
-  returns a DOM node
+- **waitFor** (Promise) retry the function within until it stops throwing or times out
+- **waitForElementToBeRemoved** (Promise) retry the function until it no longer returns a DOM node
 
 ## Events
 
@@ -123,25 +116,16 @@ See [Events API](dom-testing-library/api-events.mdx)
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
   - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
-- **act** wrapper around
-  [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
-  React Testing Library wraps render and fireEvent in a call to `act` already so
-  most cases should not require using it manually
+- **act** wrapper around [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
+  React Testing Library wraps render and fireEvent in a call to `act` already so most cases should not require using it manually
 
 ## Other
 
-See [Querying Within Elements](dom-testing-library/api-within.mdx),
-[Config API](dom-testing-library/api-configuration.mdx),
-[Cleanup](react-testing-library/api.mdx#cleanup),
+See [Querying Within Elements](dom-testing-library/api-within.mdx), [Config API](dom-testing-library/api-configuration.mdx), [Cleanup](react-testing-library/api.mdx#cleanup),
 
-- **within** take a node and return an object with all the queries bound to the
-  node (used to return the queries from `React Testing Library`'s render
-  method): `within(node).getByText("hello")`
-- **configure** change global options:
-  `configure({testIdAttribute: 'my-data-test-id'})`
-- **cleanup** clears the DOM
-  ([use with `afterEach`](react-testing-library/api.mdx#cleanup) to reset DOM
-  between tests)
+- **within** take a node and return an object with all the queries bound to the node (used to return the queries from `React Testing Library`'s render method): `within(node).getByText("hello")`
+- **configure** change global options: `configure({testIdAttribute: 'my-data-test-id'})`
+- **cleanup** clears the DOM ([use with `afterEach`](react-testing-library/api.mdx#cleanup) to reset DOM between tests)
 
 ## Text Match Options
 
