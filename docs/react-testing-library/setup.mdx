@@ -7,29 +7,17 @@ sidebar_label: Setup
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
-`React Testing Library` does not require any configuration to be used. However,
-there are some things you can do when configuring your testing framework to
-reduce some boilerplate. In these docs we'll demonstrate configuring Jest, but
-you should be able to do similar things with
-[any testing framework](#using-without-jest) (React Testing Library does not
-require that you use Jest).
+`React Testing Library` does not require any configuration to be used. However, there are some things you can do when configuring your testing framework to reduce some boilerplate. In these docs we'll demonstrate configuring Jest, but you should be able to do similar things with [any testing framework](#using-without-jest) (React Testing Library does not require that you use Jest).
 
 ## Global Config
 
-Adding options to your global test config can simplify the setup and teardown of
-tests in individual files.
+Adding options to your global test config can simplify the setup and teardown of tests in individual files.
 
 ## Custom Render
 
-It's often useful to define a custom render method that includes things like
-global context providers, data stores, etc. To make this available globally, one
-approach is to define a utility file that re-exports everything from
-`React Testing Library`. You can replace React Testing Library with this file in
-all your imports. See [below](#configuring-jest-with-test-utils) for a way to
-make your test util file accessible without using relative paths.
+It's often useful to define a custom render method that includes things like global context providers, data stores, etc. To make this available globally, one approach is to define a utility file that re-exports everything from `React Testing Library`. You can replace React Testing Library with this file in all your imports. See [below](#configuring-jest-with-test-utils) for a way to make your test util file accessible without using relative paths.
 
-The example below sets up data providers using the [`wrapper`](api.mdx#wrapper)
-option to `render`.
+The example below sets up data providers using the [`wrapper`](api.mdx#wrapper) option to `render`.
 
   <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'Javascript',
   value: 'jsx'}, {label: 'Typescript', value: 'tsx'}, ]}>
@@ -109,10 +97,7 @@ export {customRender as render}
 
 > **Note**
 >
-> Babel versions lower than 7 throw an error when trying to override the named
-> export in the example above. See
-> [#169](https://github.com/testing-library/react-testing-library/issues/169)
-> and the workaround below.
+> Babel versions lower than 7 throw an error when trying to override the named export in the example above. See [#169](https://github.com/testing-library/react-testing-library/issues/169) and the workaround below.
 
 <details>
 
@@ -141,22 +126,11 @@ module.exports = {
 
 > **Note**
 >
-> Generally you should not need to create custom queries for
-> react-testing-library. Where you do use it, you should consider whether your
-> new queries encourage you to test in a user-centric way, without testing
-> implementation details.
+> Generally you should not need to create custom queries for react-testing-library. Where you do use it, you should consider whether your new queries encourage you to test in a user-centric way, without testing implementation details.
 
-You can define your own custom queries as described in the
-[Custom Queries](dom-testing-library/api-custom-queries.mdx) documentation, or
-via the
-[`buildQueries`](dom-testing-library/api-custom-queries.mdx#buildqueries)
-helper. Then you can use them in any render call using the `queries` option. To
-make the custom queries available globally, you can add them to your custom
-render method as shown below.
+You can define your own custom queries as described in the [Custom Queries](dom-testing-library/api-custom-queries.mdx) documentation, or via the [`buildQueries`](dom-testing-library/api-custom-queries.mdx#buildqueries) helper. Then you can use them in any render call using the `queries` option. To make the custom queries available globally, you can add them to your custom render method as shown below.
 
-In the example below, a new set of query variants are created for getting
-elements by `data-cy`, a "test ID" convention mentioned in the
-[Cypress.io](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
+In the example below, a new set of query variants are created for getting elements by `data-cy`, a "test ID" convention mentioned in the [Cypress.io](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
 documentation.
 
   <Tabs groupId="test-utils" defaultValue="js" values={[ {label: 'JavaScript',
@@ -244,11 +218,9 @@ export {
 
   </Tabs>
 
-You can then override and append the new queries via the render function by
-passing a [`queries`](api.mdx#render-options) option.
+You can then override and append the new queries via the render function by passing a [`queries`](api.mdx#render-options) option.
 
-If you want to add custom queries globally, you can do this by defining your customized
-`render`, `screen` and `within` methods:
+If you want to add custom queries globally, you can do this by defining your customized `render`, `screen` and `within` methods:
 
   <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'Javascript',
   value: 'jsx'}, {label: 'Typescript', value: 'tsx'}, ]}>
@@ -322,12 +294,9 @@ expect(getByDataCy('my-component')).toHaveTextContent('Hello')
 
 ### Configuring Jest with Test Utils
 
-To make your custom test file accessible in your Jest test files without using
-relative imports (`../../test-utils`), add the folder containing the file to the
-Jest `moduleDirectories` option.
+To make your custom test file accessible in your Jest test files without using relative imports (`../../test-utils`), add the folder containing the file to the Jest `moduleDirectories` option.
 
-This will make all the `.js` files in the test-utils directory importable
-without `../`.
+This will make all the `.js` files in the test-utils directory importable without `../`.
 
 ```diff title="my-component.test.js"
 - import { render, fireEvent } from '../test-utils';
@@ -346,8 +315,7 @@ module.exports = {
 }
 ```
 
-If you're using TypeScript, merge this into your `tsconfig.json`. If you're
-using Create React App without TypeScript, save this to `jsconfig.json` instead.
+If you're using TypeScript, merge this into your `tsconfig.json`. If you're using Create React App without TypeScript, save this to `jsconfig.json` instead.
 
 ```json title="tsconfig.json"
 {
@@ -362,7 +330,8 @@ using Create React App without TypeScript, save this to `jsconfig.json` instead.
 
 ### Jest 28
 
-If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately. 
+If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately.
+
 ```bash npm2yarn
 npm install --save-dev jest-environment-jsdom
 ```
@@ -376,8 +345,7 @@ npm install --save-dev jest-environment-jsdom
  }
 ```
 
-Or if you only need `jsdom` in some of your tests, you can enable it as and when needed using
-[docblocks](https://jestjs.io/docs/configuration#testenvironment-string):
+Or if you only need `jsdom` in some of your tests, you can enable it as and when needed using [docblocks](https://jestjs.io/docs/configuration#testenvironment-string):
 
 ```js
 /**
@@ -396,9 +364,7 @@ If you're using a recent version of Jest (27), `jsdom` is no longer the default 
  }
 ```
 
-Or if you only need `jsdom` in some of your tests, you can enable it as and when
-needed using
-[docblocks](https://jestjs.io/docs/configuration#testenvironment-string):
+Or if you only need `jsdom` in some of your tests, you can enable it as and when needed using [docblocks](https://jestjs.io/docs/configuration#testenvironment-string):
 
 ```js
 /**
@@ -408,10 +374,7 @@ needed using
 
 ### Jest 24 (or lower) and defaults
 
-If you're using the Jest testing framework version 24 or lower with the default
-configuration, it's recommended to use `jest-environment-jsdom-fifteen` package
-as Jest uses a version of the jsdom environment that misses some features and
-fixes, required by React Testing Library.
+If you're using the Jest testing framework version 24 or lower with the default configuration, it's recommended to use `jest-environment-jsdom-fifteen` package as Jest uses a version of the jsdom environment that misses some features and fixes, required by React Testing Library.
 
 First, install `jest-environment-jsdom-fifteen`.
 
@@ -430,17 +393,9 @@ Then specify `jest-environment-jsdom-fifteen` as the `testEnvironment`:
 
 ## Using without Jest
 
-If you're running your tests in the browser bundled with webpack (or similar)
-then `React Testing Library` should work out of the box for you. However, most
-people using React Testing Library are using it with the Jest testing framework
-with the `testEnvironment` set to `jest-environment-jsdom` (which is the default
-configuration with Jest 26 and earlier).
+If you're running your tests in the browser bundled with webpack (or similar) then `React Testing Library` should work out of the box for you. However, most people using React Testing Library are using it with the Jest testing framework with the `testEnvironment` set to `jest-environment-jsdom` (which is the default configuration with Jest 26 and earlier).
 
-`jsdom` is a pure JavaScript implementation of the DOM and browser APIs that
-runs in Node. If you're not using Jest and you would like to run your tests in
-Node, then you must install jsdom yourself. There's also a package called
-`global-jsdom` which can be used to setup the global environment to simulate the
-browser APIs.
+`jsdom` is a pure JavaScript implementation of the DOM and browser APIs that runs in Node. If you're not using Jest and you would like to run your tests in Node, then you must install jsdom yourself. There's also a package called `global-jsdom` which can be used to setup the global environment to simulate the browser APIs.
 
 First, install `jsdom` and `global-jsdom`.
 
@@ -456,20 +411,13 @@ mocha --require global-jsdom/register
 
 ### Skipping Auto Cleanup
 
-[`Cleanup`](api.mdx#cleanup) is called after each test automatically by default
-if the testing framework you're using supports the `afterEach` global (like
-mocha, Jest, and Jasmine). However, you may choose to skip the auto cleanup by
-setting the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with
-[`cross-env`](https://github.com/kentcdodds/cross-env) like so:
+[`Cleanup`](api.mdx#cleanup) is called after each test automatically by default if the testing framework you're using supports the `afterEach` global (like mocha, Jest, and Jasmine). However, you may choose to skip the auto cleanup by setting the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with [`cross-env`](https://github.com/kentcdodds/cross-env) like so:
 
 ```
 cross-env RTL_SKIP_AUTO_CLEANUP=true jest
 ```
 
-To make this even easier, you can also simply import
-`@testing-library/react/dont-cleanup-after-each` which will do the same thing.
-Just make sure you do this before importing `@testing-library/react`. You could
-do this with Jest's `setupFiles` configuration:
+To make this even easier, you can also simply import `@testing-library/react/dont-cleanup-after-each` which will do the same thing. Just make sure you do this before importing `@testing-library/react`. You could do this with Jest's `setupFiles` configuration:
 
 ```js
 {
@@ -484,19 +432,13 @@ Or with mocha's `-r` flag:
 mocha -r @testing-library/react/dont-cleanup-after-each
 ```
 
-Alternatively, you could import `@testing-library/react/pure` in all your tests
-that you don't want the `cleanup` to run and the `afterEach` won't be setup
-automatically.
+Alternatively, you could import `@testing-library/react/pure` in all your tests that you don't want the `cleanup` to run and the `afterEach` won't be setup automatically.
 
 ### Auto Cleanup in Mocha's watch mode
 
-When using Mocha in watch mode, the globally registered cleanup is run only the
-first time after each test. Therefore, subsequent runs will most likely fail
-with a _TestingLibraryElementError: Found multiple elements_ error.
+When using Mocha in watch mode, the globally registered cleanup is run only the first time after each test. Therefore, subsequent runs will most likely fail with a _TestingLibraryElementError: Found multiple elements_ error.
 
-To enable automatic cleanup in Mocha's watch mode, add a cleanup
-[root hook](https://mochajs.org/#root-hook-plugins). Create a
-`mocha-watch-cleanup-after-each.js` file with the following contents:
+To enable automatic cleanup in Mocha's watch mode, add a cleanup [root hook](https://mochajs.org/#root-hook-plugins). Create a `mocha-watch-cleanup-after-each.js` file with the following contents:
 
 ```js title="mocha-watch-cleanup-after-each.js"
 const {cleanup} = require('@testing-library/react')
