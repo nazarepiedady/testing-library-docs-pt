@@ -14,13 +14,9 @@ sidebar_label: API
 
 ## `@testing-library/dom`
 
-This library re-exports everything from the DOM Testing Library
-(`@testing-library/dom`). See the [documentation](queries/about.mdx) to see what
-goodies you can use.
+This library re-exports everything from the DOM Testing Library (`@testing-library/dom`). See the [documentation](queries/about.mdx) to see what goodies you can use.
 
-📝 `fireEvent` is an `async` method when imported from
-`@testing-library/svelte`. This is because it calls [`tick`][svelte-tick] which
-tells Svelte to apply any new changes to the DOM.
+📝 `fireEvent` is an `async` method when imported from `@testing-library/svelte`. This is because it calls [`tick`][svelte-tick] which tells Svelte to apply any new changes to the DOM.
 
 ## `render`
 
@@ -32,12 +28,9 @@ const {results} = render(YourComponent, {ComponentOptions}, {RenderOptions})
 
 ### Component Options
 
-These are the options you pass when instantiating your Svelte `Component`.
-Please refer to the
-[Client-side component API](https://svelte.dev/docs#run-time-client-side-component-api-creating-a-component).
+These are the options you pass when instantiating your Svelte `Component`. Please refer to the [Client-side component API](https://svelte.dev/docs#run-time-client-side-component-api-creating-a-component).
 
-📝 If the only option you're passing in is `props`, then you can just pass them
-in directly.
+📝 If the only option you're passing in is `props`, then you can just pass them in directly.
 
 ```js
 // With options.
@@ -74,9 +67,7 @@ const {results} = render(YourComponent, {myProp: 'value'})
 
 Unmounts the component from the container and destroys the container.
 
-📝 When you import anything from the library, this automatically runs after each
-test. If you'd like to disable this then set `process.env.STL_SKIP_AUTO_CLEANUP`
-to true or import `dont-clean-up-after-each` from the library.
+📝 When you import anything from the library, this automatically runs after each test. If you'd like to disable this then set `process.env.STL_SKIP_AUTO_CLEANUP` to true or import `dont-clean-up-after-each` from the library.
 
 ```js
 import {render, cleanup} from '@testing-library/svelte'
@@ -92,17 +83,11 @@ cleanup() // Or like this for more control.
 
 ## `act` (`async`)
 
-An `async` helper method that takes in a `function` or `Promise` that is
-immediately called/resolved, and then calls [`tick`][svelte-tick] so all pending
-state changes are flushed, and the view now reflects any changes made to the
-DOM.
+An `async` helper method that takes in a `function` or `Promise` that is immediately called/resolved, and then calls [`tick`][svelte-tick] so all pending state changes are flushed, and the view now reflects any changes made to the DOM.
 
 ## `fireEvent` (`async`)
 
-Calls `@testing-library/dom` [fireEvent](dom-testing-library/api-events.mdx). It
-is an `async` method due to calling [`tick`][svelte-tick] which tells Svelte to
-flush all pending state changes, basically it updates the DOM to reflect the new
-changes.
+Calls `@testing-library/dom` [fireEvent](dom-testing-library/api-events.mdx). It is an `async` method due to calling [`tick`][svelte-tick] which tells Svelte to flush all pending state changes, basically it updates the DOM to reflect the new changes.
 
 **Component**
 
