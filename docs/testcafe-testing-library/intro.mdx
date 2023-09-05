@@ -5,13 +5,9 @@ title: Testcafe Testing Library
 
 ## Introduction
 
-[`testcafe-testing-library`][gh] allows the use of dom testing library queries
-within [Testcafe](https://devexpress.github.io/testcafe/) for cross-browser
-end-to-end web testing.
+[`testcafe-testing-library`][gh] allows the use of dom testing library queries within [Testcafe](https://devexpress.github.io/testcafe/) for cross-browser end-to-end web testing.
 
-If you are new to the testing-library approach for writing tests, check out the
-[this guide on which query to use](queries/about.mdx#priority) as well as the
-[cheat sheet](dom-testing-library/cheatsheet.mdx).
+If you are new to the testing-library approach for writing tests, check out the [this guide on which query to use](queries/about.mdx#priority) as well as the [cheat sheet](dom-testing-library/cheatsheet.mdx).
 
 ## Install
 
@@ -23,8 +19,7 @@ npm install --save-dev testcafe @testing-library/testcafe
 
 ## Usage
 
-`testcafe-testing-library` provides custom Selectors allowing you to query the
-dom.
+`testcafe-testing-library` provides custom Selectors allowing you to query the dom.
 
 Add the following to your `.testcaferc.json` file:
 
@@ -34,8 +29,7 @@ Add the following to your `.testcaferc.json` file:
   ],
 ```
 
-You can now import `screen` which has all the get[All]By*, query[All]By*,
-find[All]By\* selectors that you can use in your tests.
+You can now import `screen` which has all the get[All]By*, query[All]By*, find[All]By\* selectors that you can use in your tests.
 
 ```js
 import {screen} from '@testing-library/testcafe'
@@ -43,17 +37,11 @@ import {screen} from '@testing-library/testcafe'
 
 [See `Queries` for reference](queries/about.mdx)
 
-> A note about queries in testcafe. Testcafe has
-> [built in waiting](https://devexpress.github.io/testcafe/documentation/test-api/built-in-waiting-mechanisms.html#wait-mechanism-for-selectors),
-> for this reason, there's no difference between `queryBy` and `findBy` queries
-> in testcafe testing library. `getBy` queries will throw an exception (as
-> designed) so they will fail immediately and do not work with the built in
-> waiting that Testcafe provides.
+> A note about queries in testcafe. Testcafe has [built in waiting](https://devexpress.github.io/testcafe/documentation/test-api/built-in-waiting-mechanisms.html#wait-mechanism-for-selectors), for this reason, there's no difference between `queryBy` and `findBy` queries in testcafe testing library. `getBy` queries will throw an exception (as designed) so they will fail immediately and do not work with the built in waiting that Testcafe provides.
 
 ## Examples
 
-To show some simple examples (from
-[https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts)):
+To show some simple examples (from [https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts)):
 
 ```javascript
 import {screen} from '@testing-library/testcafe'
@@ -85,8 +73,7 @@ test('queryAllByText', async t => {
 
 ## Configure
 
-You can customize the testIdAttribute using the [configure function of DOM
-Testing Library][config] in a few different ways:
+You can customize the testIdAttribute using the [configure function of DOM Testing Library][config] in a few different ways:
 
 ### Once in a single page load:
 
@@ -141,10 +128,7 @@ window.TestingLibraryDom.configure({testIdAttribute: 'data-automation-id'})
 
 ## Containers
 
-By default the selectors come pre-bound to `document.body`, so no need to
-provide a container. However, if you want to restrict your query using a
-container, you can use `within` which can take either a string or a query
-(get[All]By*, query[All]By*, find[All]By\*).
+By default the selectors come pre-bound to `document.body`, so no need to provide a container. However, if you want to restrict your query using a container, you can use `within` which can take either a string or a query (get[All]By*, query[All]By*, find[All]By\*).
 
 ### Examples using `within`
 
