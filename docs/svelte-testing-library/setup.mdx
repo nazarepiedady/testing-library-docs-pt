@@ -4,10 +4,10 @@ title: Setup
 sidebar_label: Setup
 ---
 
-We recommend using [Vitest](https://vitest.dev/) but you're free to use the library
-with any testing framework and runner you're comfortable with.
+We recommend using [Vitest](https://vitest.dev/) but you're free to use the library with any testing framework and runner you're comfortable with.
 
 ## Vitest
+
 1.  Install Vitest and jsdom
 
     ```
@@ -25,9 +25,7 @@ with any testing framework and runner you're comfortable with.
     }
     ```
 
-3.  You'll need to compile the Svelte components before using them in Vitest, so
-    you need to install
-    [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte) and Vite
+3.  You'll need to compile the Svelte components before using them in Vitest, so you need to install [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte) and Vite
     
 
     ```
@@ -51,9 +49,7 @@ with any testing framework and runner you're comfortable with.
 
     ```
 
-5.  This is optional but it is recommended, you can install
-    [jest-dom](https://github.com/testing-library/jest-dom) to add handy
-    assertions to Jest
+5.  This is optional but it is recommended, you can install [jest-dom](https://github.com/testing-library/jest-dom) to add handy assertions to Jest
 
     5.1 Install `jest-dom`
 
@@ -67,16 +63,14 @@ with any testing framework and runner you're comfortable with.
     import '@testing-library/jest-dom';
     ```
 
-6.  Create your component and a test file (checkout the rest of the docs to see how)
-    and run the following command to run the tests.
+6.  Create your component and a test file (checkout the rest of the docs to see how) and run the following command to run the tests.
 
     ```
     npm run test
     ```  
 ### SvelteKit
 
-To use Vitest with SvelteKit install `vitest-svelte-kit`, which includes a preconfigured Vitest configuration for SvelteKit projects.
-You can take a look at the [`vitest-svelte-kit` configuration docs](https://github.com/nickbreaton/vitest-svelte-kit/tree/master/packages/vitest-svelte-kit#configuring) for further instructions.
+To use Vitest with SvelteKit install `vitest-svelte-kit`, which includes a preconfigured Vitest configuration for SvelteKit projects. You can take a look at the [`vitest-svelte-kit` configuration docs](https://github.com/nickbreaton/vitest-svelte-kit/tree/master/packages/vitest-svelte-kit#configuring) for further instructions.
 
 ## Jest
 
@@ -97,9 +91,7 @@ You can take a look at the [`vitest-svelte-kit` configuration docs](https://gith
     }
     ```
 
-3.  You'll need to compile the Svelte components before using them in Jest, so
-    we need to install
-    [svelte-jester](https://github.com/mihar-22/svelte-jester)
+3.  You'll need to compile the Svelte components before using them in Jest, so we need to install [svelte-jester](https://github.com/mihar-22/svelte-jester)
 
     ```bash npm2yarn
     npm install --save-dev svelte-jester
@@ -119,9 +111,7 @@ You can take a look at the [`vitest-svelte-kit` configuration docs](https://gith
     }
     ```
 
-5.  If you are using ES6 modules in your project you have to add Jest's babel
-    transform setting (it is set by default, but since we are overriding the
-    transform config, we have to add it explicitly)
+5.  If you are using ES6 modules in your project you have to add Jest's babel transform setting (it is set by default, but since we are overriding the transform config, we have to add it explicitly)
 
     5.1 Install `babel-jest`
 
@@ -146,9 +136,7 @@ You can take a look at the [`vitest-svelte-kit` configuration docs](https://gith
     },
     ```
 
-6.  This is optional but it is recommended, you can install
-    [jest-dom](https://github.com/testing-library/jest-dom) to add handy
-    assertions to Jest
+6.  This is optional but it is recommended, you can install [jest-dom](https://github.com/testing-library/jest-dom) to add handy assertions to Jest
 
     6.1 Install `jest-dom`
 
@@ -164,8 +152,7 @@ You can take a look at the [`vitest-svelte-kit` configuration docs](https://gith
     }
     ```
 
-7.  Create your component + test file (checkout the rest of the docs to see how)
-    and run it
+7.  Create your component + test file (checkout the rest of the docs to see how) and run it
 
     ```bash npm2yarn
     npm run test
@@ -173,13 +160,8 @@ You can take a look at the [`vitest-svelte-kit` configuration docs](https://gith
 
 ### Typescript
 
-To use Typescript with Jest, you'll need to install and configure `svelte-preprocess` and
-`ts-jest`. For full instructions, see the
-[`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
+To use Typescript with Jest, you'll need to install and configure `svelte-preprocess` and `ts-jest`. For full instructions, see the [`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
 
 ### Preprocessors
 
-If you'd like to also include any
-[Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then
-simply follow the instructions over at
-[svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
+If you'd like to also include any [Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then simply follow the instructions over at [svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
