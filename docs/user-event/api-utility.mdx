@@ -3,10 +3,7 @@ id: utility
 title: Utility APIs
 ---
 
-The following APIs don't have one-to-one equivalents in a real user
-interaction.  
-Their behavior is therefore an interpretation how the "perceived" user
-interaction might be translated to actual events on the DOM.
+The following APIs don't have one-to-one equivalents in a real user interaction. Their behavior is therefore an interpretation how the "perceived" user interaction might be translated to actual events on the DOM.
 
 ## clear()
 
@@ -30,8 +27,7 @@ test('clear', async () => {
 })
 ```
 
-The `Promise` is rejected if the element can not be focused or contents can not
-be selected.
+The `Promise` is rejected if the element can not be focused or contents can not be selected.
 
 ## <a name="selectoptions"/><a name="deselectoptions"/> selectOptions(), deselectOptions()
 
@@ -46,18 +42,11 @@ deselectOptions(
 ): Promise<void>
 ```
 
-Select/deselect the given options in an
-[HTMLSelectElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement)
-or
-[listbox](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role).
+Select/deselect the given options in an [HTMLSelectElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) or [listbox](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role).
 
-The `values` parameter can refer to an option per its value, HTML content or
-just provide the element. It also accepts an array of these.
+The `values` parameter can refer to an option per its value, HTML content or just provide the element. It also accepts an array of these.
 
-> Selecting multiple options and/or deselecting options of `HTMLSelectElement`
-> is only possible if
-> [multiple](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple)
-> is specified.
+> Selecting multiple options and/or deselecting options of `HTMLSelectElement` is only possible if [multiple](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple) is specified.
 
 ```jsx
 test('selectOptions', async () => {
@@ -95,8 +84,7 @@ test('deselectOptions', async () => {
 })
 ```
 
-Note that this API triggers pointer events and is therefore subject to
-[pointerEventsCheck](options.mdx#pointereventscheck).
+Note that this API triggers pointer events and is therefore subject to [pointerEventsCheck](options.mdx#pointereventscheck).
 
 ## type()
 
@@ -115,17 +103,13 @@ type(
 
 Type into an input element.
 
-> You should use [`keyboard()`](api-keyboard.mdx) if you want to just simulate pressing
-> buttons on the keyboard.  
-> You can use `type()` if you just want to conveniently insert some text into an
-> input field or textarea.
+> You should use [`keyboard()`](api-keyboard.mdx) if you want to just simulate pressing buttons on the keyboard.  
+> You can use `type()` if you just want to conveniently insert some text into an input field or textarea.
 
 1. Unless [`skipClick`](options.mdx#skipclick) is `true`, click the element.
-1. If `initialSelectionStart` is set, set the selection on the element. If
-   `initialSelectionEnd` is not set, this results in a collapsed selection.
+1. If `initialSelectionStart` is set, set the selection on the element. If `initialSelectionEnd` is not set, this results in a collapsed selection.
 1. Type the given `text` per [`keyboard()`](api-keyboard.mdx).
-1. Unless [`skipAutoClose`](options.mdx#skipautoclose) is `true`, release all
-   pressed keys.
+1. Unless [`skipAutoClose`](options.mdx#skipautoclose) is `true`, release all pressed keys.
 
 ```jsx
 test('type into an input field', async () => {
@@ -147,11 +131,9 @@ upload(
 ): Promise<void>
 ```
 
-Change a file input as if a user clicked it and selected files in the resulting
-file upload dialog.
+Change a file input as if a user clicked it and selected files in the resulting file upload dialog.
 
-> Files that don't match an `accept` property will be automatically discarded,
-> unless [`applyAccept`](options.mdx#applyaccept) is set to `false`.
+> Files that don't match an `accept` property will be automatically discarded, unless [`applyAccept`](options.mdx#applyaccept) is set to `false`.
 
 ```jsx
 test('upload file', async () => {
