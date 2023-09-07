@@ -29,8 +29,7 @@ It also exposes these methods:
 
 ## `render(Component, options)`
 
-The `render` function is the only way of rendering components in Vue Testing
-Library.
+The `render` function is the only way of rendering components in Vue Testing Library.
 
 It takes up to 2 parameters and returns an object with some helper methods.
 
@@ -57,22 +56,17 @@ The valid Vue Component to be tested.
 
 #### Options
 
-An object containing additional information to be passed to `@vue/test-utils`
-[mount](https://vue-test-utils.vuejs.org/api/options.html#mounting-options).
+An object containing additional information to be passed to `@vue/test-utils` [mount](https://vue-test-utils.vuejs.org/api/options.html#mounting-options).
 
 Additionally, the following options can also be provided:
 
 ##### `store` (`Object` | `Store`)
 
-The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store`
-object is provided, `Vue Testing Library` will import and configure a Vuex
-store. If an instantiated Vuex store is passed, it will be used.
+The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store` object is provided, `Vue Testing Library` will import and configure a Vuex store. If an instantiated Vuex store is passed, it will be used.
 
 ##### `routes` (`Array` | `VueRouter`)
 
-A set of routes for [Vue Router](https://router.vuejs.org/). If `routes` is
-provided, the library will import and configure Vue Router. If an instantiated
-Vue Router is passed, it will be used.
+A set of routes for [Vue Router](https://router.vuejs.org/). If `routes` is provided, the library will import and configure Vue Router. If an instantiated Vue Router is passed, it will be used.
 
 ##### `props` (`Object`)
 
@@ -80,13 +74,9 @@ It will be merged with `propsData`.
 
 ##### `container` (`HTMLElement`)
 
-By default, `Vue Testing Library` will create a `div` and append it to the
-`baseElement`. This is where your component will be rendered. If you provide
-your own `HTMLElement` container via this option, it will not be appended to the
-`baseElement` automatically.
+By default, `Vue Testing Library` will create a `div` and append it to the `baseElement`. This is where your component will be rendered. If you provide your own `HTMLElement` container via this option, it will not be appended to the `baseElement` automatically.
 
-For example: If you are unit testing a `tablebody` element, it cannot be a child
-of a `div`. In this case, you can specify a `table` as the render `container`.
+For example: If you are unit testing a `tablebody` element, it cannot be a child of a `div`. In this case, you can specify a `table` as the render `container`.
 
 ```js
 const table = document.createElement('table')
@@ -99,9 +89,7 @@ const {container} = render(TableBody, {
 
 ##### `baseElement` (`HTMLElement`)
 
-If the `container` is specified, then this defaults to that, otherwise this
-defaults to `document.body`. `baseElement` is used as the base element for the
-queries as well as what is printed when you use `debug()`.
+If the `container` is specified, then this defaults to that, otherwise this defaults to `document.body`. `baseElement` is used as the base element for the queries as well as what is printed when you use `debug()`.
 
 ### `render` result
 
@@ -109,10 +97,7 @@ The `render` method returns an object that has a few properties:
 
 #### `...queries`
 
-The most important feature of `render` is that the queries from
-[DOM Testing Library](queries/about.mdx) are automatically returned with their
-first argument bound to the [baseElement](#baseelement), which defaults to
-`document.body`.
+The most important feature of `render` is that the queries from [DOM Testing Library](queries/about.mdx) are automatically returned with their first argument bound to the [baseElement](#baseelement), which defaults to `document.body`.
 
 See [Queries](queries/about.mdx) for a complete list.
 
@@ -122,30 +107,19 @@ const {getByLabelText, queryAllByTestId} = render(Component)
 
 #### `container`
 
-The containing DOM node of your rendered Vue Component. By default it's a `div`.
-This is a regular DOM node, so you can call `container.querySelector` etc. to
-inspect the children.
+The containing DOM node of your rendered Vue Component. By default it's a `div`. This is a regular DOM node, so you can call `container.querySelector` etc. to inspect the children.
 
-> Tip: To get the root element of your rendered element, use
-> `container.firstChild`.
+> Tip: To get the root element of your rendered element, use `container.firstChild`.
 
-> 🚨 If you find yourself using `container` to query for rendered elements then
-> you should reconsider! The other queries are designed to be more resilient to
-> changes that will be made to the component you're testing. Avoid using
-> `container` to query for elements!
+> 🚨 If you find yourself using `container` to query for rendered elements then you should reconsider! The other queries are designed to be more resilient to changes that will be made to the component you're testing. Avoid using `container` to query for elements!
 
 #### `baseElement`
 
-The containing DOM node where your Vue Component is rendered in the `container`.
-If you don't specify the `baseElement` in the options of `render`, it will
-default to `document.body`.
+The containing DOM node where your Vue Component is rendered in the `container`. If you don't specify the `baseElement` in the options of `render`, it will default to `document.body`.
 
-This is useful when the component you want to test renders something outside the
-container `div`, e.g. when you want to snapshot test your portal component which
-renders its HTML directly in the body.
+This is useful when the component you want to test renders something outside the container `div`, e.g. when you want to snapshot test your portal component which renders its HTML directly in the body.
 
-> Note: the queries returned by the `render` looks into `baseElement`, so you
-> can use queries to test your portal component without the `baseElement`.
+> Note: the queries returned by the `render` looks into `baseElement`, so you can use queries to test your portal component without the `baseElement`.
 
 #### `debug(element)`
 
@@ -165,28 +139,23 @@ debug()
 // </div>
 ```
 
-This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`DOM Testing Library`](dom-testing-library/api-debugging.mdx/#prettydom).
+This is a simple wrapper around `prettyDOM` which is also exposed and comes from [`DOM Testing Library`](dom-testing-library/api-debugging.mdx/#prettydom).
 
 #### `unmount()`
 
-An alias for `@vue/test-utils`
-[destroy](https://vue-test-utils.vuejs.org/api/wrapper/#destroy).
+An alias for `@vue/test-utils` [destroy](https://vue-test-utils.vuejs.org/api/wrapper/#destroy).
 
 #### `html()`
 
-An alias for `@vue/test-utils`
-[html](https://vue-test-utils.vuejs.org/api/wrapper/#html).
+An alias for `@vue/test-utils` [html](https://vue-test-utils.vuejs.org/api/wrapper/#html).
 
 #### `emitted()`
 
-An alias for `@vue/test-utils`
-[emitted](https://vue-test-utils.vuejs.org/api/wrapper/#emitted).
+An alias for `@vue/test-utils` [emitted](https://vue-test-utils.vuejs.org/api/wrapper/#emitted).
 
 #### `rerender(props)`
 
-An alias for `@vue/test-utils`
-[setProps](https://test-utils.vuejs.org/api/#setprops).
+An alias for `@vue/test-utils` [setProps](https://test-utils.vuejs.org/api/#setprops).
 
 It returns a Promise through so you can `await rerender(...)`.
 
@@ -194,10 +163,7 @@ It returns a Promise through so you can `await rerender(...)`.
 
 ## `fireEvent`
 
-Because Vue applies DOM updates asynchronously during re-renders, the
-[fireEvent](dom-testing-library/api-events.mdx) tools are re-exported as `async`
-functions. To ensure that the DOM is properly updated in response to an event in
-a test, it's recommended to always `await` `fireEvent`.
+Because Vue applies DOM updates asynchronously during re-renders, the [fireEvent](dom-testing-library/api-events.mdx) tools are re-exported as `async` functions. To ensure that the DOM is properly updated in response to an event in a test, it's recommended to always `await` `fireEvent`.
 
 ```js
 await fireEvent.click(getByText('Click me'))
@@ -219,23 +185,16 @@ await fireEvent.blur(getByLabelText('username'))
 
 ### `update(elem, value)`
 
-Properly handles inputs controlled by `v-model`. It updates the
-input/select/textarea inner value while emitting the appropriate native event.
+Properly handles inputs controlled by `v-model`. It updates the input/select/textarea inner value while emitting the appropriate native event.
 
-See a working example of `update` in the
-[v-model example test](vue-testing-library/examples.mdx#example-using-v-model).
+See a working example of `update` in the [v-model example test](vue-testing-library/examples.mdx#example-using-v-model).
 
 ---
 
 ## `cleanup`
 
-Unmounts Vue trees that were mounted with
-[render](#rendercomponent-options-callback).
+Unmounts Vue trees that were mounted with [render](#rendercomponent-options-callback).
 
-> If you are using an environment that supports `afterEach` hook (as in Jest),
-> there's no need to call `cleanup` manually. Vue Testing Library handles it for
-> you.
+> If you are using an environment that supports `afterEach` hook (as in Jest), there's no need to call `cleanup` manually. Vue Testing Library handles it for you.
 
-Failing to call `cleanup` when you've called `render` could result in a memory
-leak and tests which are not idempotent (which can lead to difficult to debug
-errors in your tests).
+Failing to call `cleanup` when you've called `render` could result in a memory leak and tests which are not idempotent (which can lead to difficult to debug errors in your tests).
