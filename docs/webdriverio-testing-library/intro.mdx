@@ -3,13 +3,11 @@ id: intro
 title: WebdriverIO Testing Library
 ---
 
-[`webdriverio-testing-library`][gh] allows the use of dom-testing-library
-queries in [WebdriverIO](https://webdriver.io/) for end-to-end web testing.
+[`webdriverio-testing-library`][gh] allows the use of dom-testing-library queries in [WebdriverIO](https://webdriver.io/) for end-to-end web testing.
 
 ## Install
 
-> Be sure to follow the
-> [WebdriverIO install & config instructions first](https://webdriver.io/docs/gettingstarted/)
+> Be sure to follow the [WebdriverIO install & config instructions first](https://webdriver.io/docs/gettingstarted/)
 
 then just
 
@@ -23,11 +21,7 @@ npm install -D @testing-library/webdriverio
 
 ### `setupBrowser`
 
-Accepts a WebdriverIO [browser object](https://webdriver.io/docs/browserobject)
-and returns dom-testing-library [queries](/docs/queries/about) modifed to return
-WebdriverIO elements like normal
-[selectors](https://webdriver.io/docs/selectors/). **All queries are async** and
-are bound to `document.body` by default.
+Accepts a WebdriverIO [browser object](https://webdriver.io/docs/browserobject) and returns dom-testing-library [queries](/docs/queries/about) modifed to return WebdriverIO elements like normal [selectors](https://webdriver.io/docs/selectors/). **All queries are async** and are bound to `document.body` by default.
 
 ```javascript
 import {setupBrowser} from '@testing-library/webdriverio'
@@ -42,10 +36,7 @@ it('can click button', async () => {
 })
 ```
 
-`setupBrowser` also adds queries as commands to the browser and to all
-WebdriverIO elements. The browser commands are scoped to `document.body`. The
-element commands are scoped to the element in the same way as if it was passed
-to [`within`](#within).
+`setupBrowser` also adds queries as commands to the browser and to all WebdriverIO elements. The browser commands are scoped to `document.body`. The element commands are scoped to the element in the same way as if it was passed to [`within`](#within).
 
 ```javascript
 it('adds queries as browser commands', async () => {
@@ -65,8 +56,7 @@ it('adds queries as element commands scoped to element', async () => {
 })
 ```
 
-When using [sync mode](https://webdriver.io/docs/sync-vs-async#sync-mode) these
-commands are also synchronous:
+When using [sync mode](https://webdriver.io/docs/sync-vs-async#sync-mode) these commands are also synchronous:
 
 ```javascript
 it('adds queries as browser commands', async () => {
@@ -86,9 +76,7 @@ it('adds queries as element commands scoped to element', async () => {
 })
 ```
 
-When using v7.19 or higher of WebdriverIO you can also use chainable queries.
-Chainable queries are added to the browser and element as commands with the
-format `{query}$`.
+When using v7.19 or higher of WebdriverIO you can also use chainable queries. Chainable queries are added to the browser and element as commands with the format `{query}$`.
 
 ```javascript
 it('can chain browser getBy queries', async () => {
@@ -164,10 +152,7 @@ it('lets you configure queries', async () => {
 
 ## Typescript
 
-This library comes with full typescript definitions. To use the commands added
-by [`setupBrowser`](#setupbrowser) the `Browser` and `Element` interfaces in the
-global `WebdriverIO` namespace need to be extended. Add the following to a
-typescript module:
+This library comes with full typescript definitions. To use the commands added by [`setupBrowser`](#setupbrowser) the `Browser` and `Element` interfaces in the global `WebdriverIO` namespace need to be extended. Add the following to a typescript module:
 
 ```typescript
 import {WebdriverIOQueries} from '@testing-library/webdriverio'
@@ -180,8 +165,7 @@ declare global {
 }
 ```
 
-If you are using the `@wdio/sync` package you will need to use the
-`WebdriverIOQueriesSync` type to extend the interfaces:
+If you are using the `@wdio/sync` package you will need to use the `WebdriverIOQueriesSync` type to extend the interfaces:
 
 ```typescript
 import {WebdriverIOQueriesSync} from '@testing-library/webdriverio'
@@ -194,8 +178,7 @@ declare global {
 }
 ```
 
-To add chainable query types you need to extend the above interfaces as well as
-`ChainablePromiseElement` with `WebdriverIOQueriesChainable`:
+To add chainable query types you need to extend the above interfaces as well as `ChainablePromiseElement` with `WebdriverIOQueriesChainable`:
 
 ```typescript
 import {WebdriverIOQueriesChainable, WebdriverIOQueries} from '../../src'
@@ -224,13 +207,9 @@ browser.getByRole('navigation')
 // "Argument of type '"navigation"' is not assignable to parameter of type 'ByRoleOptions | undefined'."
 ```
 
-you need to include "DOM" in the
-[lib](https://www.typescriptlang.org/tsconfig#lib) option of your tsconfig. See
-[here](https://github.com/testing-library/webdriverio-testing-library/issues/22)
-for more information.
+you need to include "DOM" in the [lib](https://www.typescriptlang.org/tsconfig#lib) option of your tsconfig. See [here](https://github.com/testing-library/webdriverio-testing-library/issues/22) for more information.
 
-Additional information about using typescript with WebdriverIO can be found
-[here](https://webdriver.io/docs/typescript/)
+Additional information about using typescript with WebdriverIO can be found [here](https://webdriver.io/docs/typescript/)
 
 [config]: ../dom-testing-library/api-configuration.mdx
 [gh]: https://github.com/testing-library/webdriverio-testing-library
